@@ -5,14 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 
+// Components
+import { HeaderComponent } from './components/header/header.component';
+import { HeaderLogobarComponent } from './components/header-logobar/header-logobar.component';
+import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.component';
+
+// Material Angular Components
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
+    // App Components
+    HeaderComponent,
+    HeaderLogobarComponent,
+    HeaderNavbarComponent,
     LandingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // Material Angular Components
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
