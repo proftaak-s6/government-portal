@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 // Components
 import { HeaderComponent } from './components/header/header.component';
@@ -19,6 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     HeaderComponent,
     HeaderLogobarComponent,
     HeaderNavbarComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
