@@ -1,3 +1,19 @@
-<p>
-  car-management-dialog works!
-</p>
+<div class="form-container">
+  <form>
+    <h3>Auto toevoegen</h3>
+    <mat-form-field>
+      <input matInput placeholder="Kenteken" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Eigenaar">
+        <mat-option value="Gavin Belson">Gavin Belson</mat-option>
+        <mat-option value="Nelson Bigetti">Nelson Bigetti</mat-option>
+        <mat-option value="Richard Hendricks">Richard Hendricks</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="action-bar">
+      <button mat-button color="warn">Annuleren</button>
+      <button class="save-button" mat-button color="primary">Save</button>
+    </div>
+  </form>
+</div>
