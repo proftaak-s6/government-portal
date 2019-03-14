@@ -14,13 +14,17 @@ import { HeaderLogobarComponent } from './components/header-logobar/header-logob
 import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.component';
 
 // Material Angular Components
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
+import {
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatButtonModule,
+  MatTableModule,
+  MatIconModule,
+  MatPaginatorModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatOptionModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
