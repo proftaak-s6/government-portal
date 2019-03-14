@@ -40,16 +40,9 @@ export class CarManagementComponent implements OnInit {
   }
 
   openAddCarDialog() {
-    console.log('clicked Add Car');
-    // const car: Car = new Car();
     const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
-      width: '400px',
-      // data: car
+      width: '400px'
     });
-  }
-
-  openEditCarDialog() {
-    console.log('clicked Edit Car');
   }
 
   openDeleteCarDialog() {
