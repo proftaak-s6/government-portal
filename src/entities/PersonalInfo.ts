@@ -1,7 +1,7 @@
 import { UUID } from 'angular2-uuid';
+import { BaseEntity } from './BaseEntity';
 
-export class PersonalInfo {
-    public id: UUID = UUID.UUID();
+export class PersonalInfo extends BaseEntity {
     public FirstName: string;
     public LastName: string;
     public DateOfBirth: Date;
@@ -19,6 +19,7 @@ export class PersonalInfo {
         zipcode: string,
         city: string,
         country: string, ) {
+        super();
         this.FirstName = firstName;
         this.LastName = lastName;
         this.DateOfBirth = dateOfBirth;

@@ -1,9 +1,9 @@
 import { Car } from './Car';
 import { UUID } from 'angular2-uuid';
 import { PersonalInfo } from './PersonalInfo';
+import { BaseEntity } from './BaseEntity';
 
-export class Owner {
-    public id: UUID;
+export class Owner extends BaseEntity {
     public personalInfo: PersonalInfo;
     public Cars: Array<Car>;
 
@@ -11,7 +11,7 @@ export class Owner {
         personalInfo: PersonalInfo,
         cars: Array<Car> = new Array<Car>()
     ) {
-        this.id = UUID.UUID();
+        super();
         this.personalInfo = personalInfo;
         this.Cars = cars;
     }

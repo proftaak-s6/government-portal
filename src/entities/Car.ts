@@ -1,8 +1,8 @@
 import { UUID } from 'angular2-uuid';
 import { Tracker } from './Tracker';
+import { BaseEntity } from './BaseEntity';
 
-export class Car {
-    public id: UUID;
+export class Car extends BaseEntity {
     public LicensePlateNumber: string;
     public VehicleType: string;
     public EngineType: string;
@@ -18,7 +18,7 @@ export class Car {
         energyLabel: string,
         tracker: Tracker,
     ) {
-        this.id = UUID.UUID();
+        super();
         this.LicensePlateNumber = licensePlateNumber;
         this.VehicleType = vehicleType;
         this.EngineType = engineType;
