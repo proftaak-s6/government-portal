@@ -23,8 +23,11 @@ import {
   MatButtonModule,
   MatTableModule,
   MatIconModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatDialogModule
 } from '@angular/material';
+import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,11 +37,17 @@ import {
     HeaderLogobarComponent,
     HeaderNavbarComponent,
     LandingComponent,
-    CarManagementComponent
+    CarManagementComponent,
+    CarManagementDialogComponent
+  ],
+  entryComponents: [
+    CarManagementDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     // Material Angular Components
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -49,7 +58,8 @@ import {
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

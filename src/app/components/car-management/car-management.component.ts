@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
 
 export interface Car {
   licensePlateNumber: string;
@@ -26,7 +27,7 @@ export class CarManagementComponent implements OnInit {
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor() { }
+  constructor(private carDialog: MatDialog) { }
 
   ngOnInit() {
     this.getData();
@@ -40,6 +41,11 @@ export class CarManagementComponent implements OnInit {
 
   openAddCarDialog() {
     console.log('clicked Add Car');
+    // const car: Car = new Car();
+    const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
+      width: '400px',
+      // data: car
+    });
   }
 
   openEditCarDialog() {
