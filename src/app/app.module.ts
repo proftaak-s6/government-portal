@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CarManagementComponent } from './components/car-management/car-management.component';
 
 // Components
 import { HeaderComponent } from './components/header/header.component';
@@ -11,7 +14,17 @@ import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.
 import { LandingComponent } from './components/landing/landing.component';
 
 // Material Angular Components
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatButtonModule,
+  MatTableModule,
+  MatIconModule,
+  MatPaginatorModule
+} from '@angular/material';
 
 // API 
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +40,8 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     HeaderComponent,
     HeaderLogobarComponent,
     HeaderNavbarComponent,
-    LandingComponent
+    LandingComponent,
+    CarManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +50,16 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     // API Mocking
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     // Material Angular Components
-    MatToolbarModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule
   ],
   providers: [InMemoryDataService],
   bootstrap: [AppComponent]
