@@ -1,23 +1,49 @@
-.form-container {
-    max-width: 800px;
+.table-container {
+    max-width: 1080px;
     margin-top: 64px;
     margin-left: auto;
     margin-right: auto;
+    padding: 30px 60px 15px 60px;
+    background-color: #f3f3f3;
 
-    form {
+    .table-top-bar {
         display: flex;
-        flex-direction: column;
-        background-color: #f3f3f3;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        padding-left: 60px;
-        padding-right: 60px;
+        margin-bottom: 5px;
 
         h3 {
             color: #01689b;
             font-size: 1.45em;
             line-height: 1.2em;
-            margin-bottom: 5px;
+            margin-bottom: auto;
+            margin-top: auto;
+        }
+
+        button {
+            margin: auto 0 auto auto;
+        }
+    }
+    
+    .filter {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        background-color: #f3f3f3;
+
+        td.mat-cell:last-of-type {
+            width: 96px;
+
+            button {
+                min-width: 48px;
+                padding: 0 8px;
+            }
+        }
+    }
+
+    .action-bar {
+        mat-paginator {
+            background-color: #f3f3f3;
         }
     }
 }
