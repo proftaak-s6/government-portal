@@ -11,14 +11,16 @@ export class PersonalInfo extends BaseEntity {
     public City: string;
     public Country: string;
 
-    constructor(firstName: string,
+    constructor(
+        firstName: string,
         lastName: string,
         dateOfBirth: Date,
         streetname: string,
         housenumber: string,
         zipcode: string,
         city: string,
-        country: string, ) {
+        country: string
+    ) {
         super();
         this.FirstName = firstName;
         this.LastName = lastName;
