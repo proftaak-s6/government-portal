@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Rekeningrijder</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Voornaam" [(ngModel)]="this.data.PersonalInfo.FirstName">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Achternaam" [(ngModel)]="this.data.PersonalInfo.LastName">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Straatnaam" [(ngModel)]="this.data.PersonalInfo.Streetname">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Huisnummer" [(ngModel)]="this.data.PersonalInfo.Housenumber">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Postcode" [(ngModel)]="this.data.PersonalInfo.Zipcode">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Stad" [(ngModel)]="this.data.PersonalInfo.City">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Land" [(ngModel)]="this.data.PersonalInfo.Country">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Geboortedatum" [matDatepicker]="myDatepicker" [(ngModel)]="this.data.PersonalInfo.DateOfBirth">
+    <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()" cdkFocusInitial>Ok</button>
+</div>

@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { Owner } from 'src/entities/Owner';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { PersonalInfo } from 'src/entities/PersonalInfo';
+import { OwnerManagementAddEditDialog } from './owner-management-addedit-dialog/owner-management-addedit-dialog.component';
+import { OwnerManagementDeleteDialog } from './owner-management-delete-dialog/owner-management-delete-dialog.component';
 
 @Component({
   selector: 'rr-owner-management',
@@ -16,7 +18,9 @@ export class OwnerManagementComponent implements OnInit {
   private displayedColumns: string[] = ['fullName', 'address', 'country', 'actions'];
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
-  constructor(private ownerService: OwnerService) { }
+  constructor(private ownerService: OwnerService,
+    public AddEditDialog: MatDialog,
+    public DeleteDialog: MatDialog) { }
 
   ngOnInit() {
     this.getData();
@@ -30,19 +34,43 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    console.log("Add owner dialog clicked");
-    const personalInfo: PersonalInfo = new PersonalInfo("Niels", "Werkman", new Date(1993, 10, 2), "Enschotsestraat", "33B", "3123SS", "Tilburg", "The Netherlands")
-    const owner: Owner = new Owner(personalInfo)
-    this.ownerService.save(owner).subscribe(x => {
-      this.getData();
+    const emptyOwner: Owner = new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""));
+
+    const dialogRef = this.AddEditDialog.open(OwnerManagementAddEditDialog, { width: '500px', data: emptyOwner });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.ownerService.save(result).subscribe(x => this.getData());
+      } else {
+        this.getData();
+      }
     });
   }
 
-  openEditOwnerDialog(){
-      
+  openEditOwnerDialog(owner: Owner) {
+    const dialogRef = this.AddEditDialog.open(OwnerManagementAddEditDialog, { width: '500px', data: owner, });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.ownerService.save(result).subscribe(x => this.getData());
+      } else {
+        this.getData();
+      }
+    });
   }
 
-  openDeleteOwnerDialog(){
-      
+  openDeleteOwnerDialog(owner: Owner) {
+    const dialogRef = this.DeleteDialog.open(OwnerManagementDeleteDialog, { width: '500px', data: owner, });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        console.log("aa")
+        this.ownerService.delete(result.id).subscribe(x => this.getData());
+      } else {
+        console.log("bb")
+        this.getData();
+      }
+    });
   }
 }
