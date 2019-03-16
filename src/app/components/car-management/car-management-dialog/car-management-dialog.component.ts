@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Car } from '../car-management.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { RdwService } from 'src/app/services/rdw/rdw.service';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { RdwService, RdwCarResponse, RdwFuelResponse } from 'src/app/services/rdw/rdw.service';
+import { Car } from 'src/entities/Car';
 
 @Component({
   selector: 'app-car-management-dialog',
@@ -10,23 +10,28 @@ import { RdwService } from 'src/app/services/rdw/rdw.service';
   styleUrls: ['./car-management-dialog.component.less']
 })
 export class CarManagementDialogComponent implements OnInit {
-  formGroup: FormGroup;
 
   constructor(
     private rdwService: RdwService,
     public dialogRef: MatDialogRef<CarManagementDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Car,
-    formBuilder: FormBuilder
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: Car
+  ) {
+
+  }
 
   ngOnInit() {
   }
 
-  retrieveCarData() {
-    this.rdwService.getByLicensePlateNumber('32LPVV').subscribe(data => {
-      console.log(data);
+  retrieveCarData(value: string) {
+    this.rdwService.getCarByLicensePlateNumber(value).subscribe((data: RdwCarResponse) => {
+      this.data.LicensePlateNumber = data.kenteken;
+      this.data.VehicleType = data.voertuigsoort;
+      this.data.EngineType = `${data.cilinderinhoud}cc`;
+      this.data.EnergyLabel = data.zuinigheidslabel;
     });
-    console.log('getting car data');
+    this.rdwService.getFuelByLicensePlateNumber(value).subscribe((data: RdwFuelResponse) => {
+      this.data.FuelType = data.brandstof_omschrijving;
+    });
   }
 
   onCancelClick() {

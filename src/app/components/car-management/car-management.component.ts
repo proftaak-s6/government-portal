@@ -1,18 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
-
-export interface Car {
-  licensePlateNumber: string;
-  carType: string;
-  engineType: string;
-  fuelType: string;
-  energyLabel: string;
-}
+import { Car } from 'src/entities/Car';
 
 const CAR_DATA: Car[] = [
-  { licensePlateNumber: 'TD-NR-98', carType: 'sedan', engineType: '1.2l', fuelType: 'Diesel', energyLabel: 'D' },
-  { licensePlateNumber: '32-LP-VV', carType: 'hatchback', engineType: '1.2l', fuelType: 'Benzine', energyLabel: 'C' }
+  new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
+  new Car('32-LP-VV', 'Personenauto', '1199cc', 'Benzine', 'C', null)
 ];
 
 @Component({
@@ -40,7 +33,8 @@ export class CarManagementComponent implements OnInit {
 
   openAddCarDialog() {
     const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
-      width: '400px'
+      width: '400px',
+      data: new Car('', '', '', '', '', null)
     });
   }
 
