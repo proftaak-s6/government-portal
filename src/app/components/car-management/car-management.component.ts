@@ -36,7 +36,6 @@ export class CarManagementComponent implements OnInit {
   getData() {
     this.dataSource = new MatTableDataSource<Car>(CAR_DATA);
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
   }
 
   openAddCarDialog() {

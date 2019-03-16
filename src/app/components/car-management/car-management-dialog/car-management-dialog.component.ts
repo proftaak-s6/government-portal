@@ -20,12 +20,15 @@ export class CarManagementDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  retrieveCarData() {
+    console.log('getting car data');
+  }
+
   onCancelClick() {
     this.dialogRef.close();
   }
 
   onSubmit() {
-    console.log('save data');
     this.dialogRef.close();
   }
 

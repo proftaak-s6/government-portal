@@ -2,7 +2,7 @@
   <form (ngSubmit)="onSubmit()">
     <h3>Auto toevoegen</h3>
     <mat-form-field>
-      <input matInput placeholder="Kenteken" />
+      <input matInput (focusout)="retrieveCarData()" placeholder="Kenteken" />
     </mat-form-field>
     <mat-form-field>
       <mat-select placeholder="Eigenaar">
