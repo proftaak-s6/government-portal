@@ -29,12 +29,12 @@ import {
 import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// API 
+// API
 import { HttpClientModule } from '@angular/common/http';
 
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service'
+import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
 
 @NgModule({
   declarations: [
