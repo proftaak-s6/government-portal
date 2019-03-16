@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service'
+import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
+import { OwnerManagementComponent } from './components/owner-management/owner-management.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     HeaderLogobarComponent,
     HeaderNavbarComponent,
     LandingComponent,
-    CarManagementComponent
+    CarManagementComponent,
+    OwnerManagementComponent
   ],
   imports: [
     BrowserModule,
