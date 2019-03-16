@@ -1,8 +1,10 @@
 <div class="navbar-container">
-  <mat-toolbar>
+  <mat-toolbar color="primary">
     <mat-toolbar-row>
       <div class="breadcrumbs-container">
-        Home
+        <div class="breadcrumb-home" [routerLink]="['/']">
+          Home
+        </div>
       </div>
       <span class="navbar-spacer"></span>
       <div class="quicklinks-container">
