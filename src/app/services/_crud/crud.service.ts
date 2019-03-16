@@ -10,12 +10,12 @@ export abstract class CrudService<T extends BaseEntity>{
         this.baseUrl = baseUrl;
     }
 
-    public save(object: T) {
-        this.http.post(this.baseUrl, object);
+    public save(object: T): Observable<Object> {
+        return this.http.post(this.baseUrl, object);
     }
 
-    public update(object: T) {
-        this.http.put(this.baseUrl + '/' + object.id, object);
+    public update(object: T): Observable<Object> {
+        return this.http.put(this.baseUrl + '/' + object.id, object);
     }
 
     public findOne(id: UUID): Observable<T> {
@@ -26,7 +26,7 @@ export abstract class CrudService<T extends BaseEntity>{
         return this.http.get<T[]>(this.baseUrl);
     }
 
-    public delete(id: UUID) {
-        this.http.delete(this.baseUrl + '/' + id);
+    public delete(id: UUID): Observable<Object> {
+        return this.http.delete(this.baseUrl + '/' + id);
     }
 }
