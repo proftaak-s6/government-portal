@@ -3,11 +3,7 @@ import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
 import { CarService } from 'src/app/services/car/car.service';
 import { Car } from 'src/entities/Car';
-
-const CAR_DATA: Car[] = [
-  new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
-  new Car('32-LP-VV', 'Personenauto', '1199cc', 'Benzine', 'C', null)
-];
+import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
 
 @Component({
   selector: 'app-car-management',
