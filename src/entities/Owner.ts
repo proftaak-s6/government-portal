@@ -4,7 +4,7 @@ import { PersonalInfo } from './PersonalInfo';
 import { BaseEntity } from './BaseEntity';
 
 export class Owner extends BaseEntity {
-    public personalInfo: PersonalInfo;
+    public PersonalInfo: PersonalInfo;
     public Cars: Array<Car>;
 
     constructor(
@@ -12,7 +12,7 @@ export class Owner extends BaseEntity {
         cars: Array<Car> = new Array<Car>()
     ) {
         super();
-        this.personalInfo = personalInfo;
+        this.PersonalInfo = personalInfo;
         this.Cars = cars;
     }
 }
