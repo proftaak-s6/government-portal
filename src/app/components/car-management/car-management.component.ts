@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
 import { Car } from 'src/entities/Car';
+import { CarService } from 'src/app/services/car/car.service';
 
 const CAR_DATA: Car[] = [
   new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
@@ -20,7 +21,7 @@ export class CarManagementComponent implements OnInit {
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor(private carDialog: MatDialog) { }
+  constructor(private carDialog: MatDialog, private carService: CarService) { }
 
   ngOnInit() {
     this.getData();
@@ -36,6 +37,15 @@ export class CarManagementComponent implements OnInit {
       width: '400px',
       data: new Car('', '', '', '', '', null)
     });
+
+    dialogRef.afterClosed().subscribe((result: Car) => {
+      console.log(result);
+      if (result) {
+        this.carService.save(result).subscribe(_ => this.getData);
+      } else {
+        this.getData();
+      }
+     });
   }
 
   openDeleteCarDialog() {

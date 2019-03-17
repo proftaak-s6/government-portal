@@ -28,10 +28,13 @@ export class CarManagementDialogComponent implements OnInit {
       this.data.VehicleType = data.voertuigsoort;
       this.data.EngineType = `${data.cilinderinhoud}cc`;
       this.data.EnergyLabel = data.zuinigheidslabel;
-    });
+    },
+    err => console.log('licenseplate is invalid, or there are missing fields'));
+
     this.rdwService.getFuelByLicensePlateNumber(value).subscribe((data: RdwFuelResponse) => {
       this.data.FuelType = data.brandstof_omschrijving;
-    });
+    },
+    err => console.log('licenseplate is invalid, or there are missing fields'));
   }
 
   onCancelClick() {
@@ -39,7 +42,8 @@ export class CarManagementDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dialogRef.close();
+    console.log('submitted form');
+    this.dialogRef.close(this.data);
   }
 
 }

@@ -2,19 +2,20 @@
   <form (ngSubmit)="onSubmit()">
     <h3>Auto toevoegen</h3>
     <mat-form-field>
-      <input matInput (focusout)="retrieveCarData($event.target.value)" placeholder="Kenteken" [ngModel]="this.data.LicensePlateNumber" name="licensPlateNumber" />
+      <input matInput (focusout)="retrieveCarData($event.target.value)" placeholder="Kenteken" [(ngModel)]="this.data.LicensePlateNumber" name="licensPlateNumber"
+        required minlength="6" maxlength="6"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Type" [ngModel]="this.data.VehicleType" name="vehicleType" disabled />
+      <input matInput placeholder="Type" [(ngModel)]="this.data.VehicleType" name="vehicleType" disabled />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Motor" [ngModel]="this.data.EngineType" name="engineType" disabled />
+      <input matInput placeholder="Motor" [(ngModel)]="this.data.EngineType" name="engineType" disabled />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Brandstof" [ngModel]="this.data.FuelType" name="fuelType" disabled />
+      <input matInput placeholder="Brandstof" [(ngModel)]="this.data.FuelType" name="fuelType" disabled />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Label" [ngModel]="this.data.EnergyLabel" name="energyLabel" disabled />
+      <input matInput placeholder="Label" [(ngModel)]="this.data.EnergyLabel" name="energyLabel" disabled />
     </mat-form-field>
     <div class="action-bar">
       <button mat-button [mat-dialog-close]="true" color="warn">Annuleren</button>

@@ -33,8 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // MOCK Api
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     // API Mocking
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     // Material Angular Components
     BrowserAnimationsModule,
     MatToolbarModule,
