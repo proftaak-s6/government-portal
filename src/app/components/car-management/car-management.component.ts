@@ -1,17 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
-
-export interface Car {
-  licensePlateNumber: string;
-  carType: string;
-  engineType: string;
-  fuelType: string;
-  energyLabel: string;
-}
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
+import { CarService } from 'src/app/services/car/car.service';
+import { Car } from 'src/entities/Car';
 
 const CAR_DATA: Car[] = [
-  { licensePlateNumber: 'TD-NR-98', carType: 'sedan', engineType: '1.2l', fuelType: 'Diesel', energyLabel: 'D' },
-  { licensePlateNumber: '32-LP-VV', carType: 'hatchback', engineType: '1.2l', fuelType: 'Benzine', energyLabel: 'C' }
+  new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
+  new Car('32-LP-VV', 'Personenauto', '1199cc', 'Benzine', 'C', null)
 ];
 
 @Component({
@@ -26,7 +21,9 @@ export class CarManagementComponent implements OnInit {
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor() { }
+  constructor(
+    private carDialog: MatDialog,
+    private carService: CarService) { }
 
   ngOnInit() {
     this.getData();
@@ -46,8 +43,19 @@ export class CarManagementComponent implements OnInit {
     console.log('clicked Edit Car');
   }
 
-  openDeleteCarDialog() {
-    console.log('clicked Delete Car');
+  openDeleteCarDialog(value: Car) {
+    const dialogRef = this.carDialog.open(CarManagementDeleteDialogComponent, {
+      width: '500px',
+      data: value
+    });
+
+    dialogRef.afterClosed().subscribe((result: Car) => {
+      if (result) {
+        this.carService.delete(result.id).subscribe(_ => this.getData());
+      } else {
+        this.getData();
+      }
+    });
   }
 
   applyFilter(filterValue: string) {
