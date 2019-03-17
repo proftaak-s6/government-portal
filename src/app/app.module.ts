@@ -12,9 +12,11 @@ import { HeaderLogobarComponent } from './components/header-logobar/header-logob
 import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarManagementComponent } from './components/car-management/car-management.component';
+import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
+import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
-import { OwnerManagementDeleteDialog } from'./components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
 import { OwnerManagementAddEditDialog } from './components/owner-management/owner-management-addedit-dialog/owner-management-addedit-dialog.component'
+import { OwnerManagementDeleteDialog } from'./components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
 
 // Material Angular Components
 import {
@@ -31,7 +33,6 @@ import {
   MatDatepickerModule,
   MatNativeDateModule
 } from '@angular/material';
-import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
 
 // API
 import { HttpClientModule } from '@angular/common/http';
@@ -39,7 +40,6 @@ import { HttpClientModule } from '@angular/common/http';
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
-import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import { CarManagementDeleteDialogComponent } from './components/car-management/
     LandingComponent,
     CarManagementComponent,
     CarManagementDialogComponent,
+    CarManagementDeleteDialogComponent,
     OwnerManagementComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
@@ -82,6 +83,7 @@ import { CarManagementDeleteDialogComponent } from './components/car-management/
     MatNativeDateModule
   ],
   entryComponents: [
+    CarManagementDialogComponent,
     CarManagementDeleteDialogComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog
