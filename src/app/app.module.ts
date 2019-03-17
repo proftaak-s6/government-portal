@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.
 import { LandingComponent } from './components/landing/landing.component';
 import { CarManagementComponent } from './components/car-management/car-management.component';
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
-import { OwnerManagementDeleteDialog } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementDeleteDialog } from'./components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
 import { OwnerManagementAddEditDialog } from './components/owner-management/owner-management-addedit-dialog/owner-management-addedit-dialog.component'
 
 // Material Angular Components
@@ -32,7 +32,6 @@ import {
   MatNativeDateModule
 } from '@angular/material';
 import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // API
 import { HttpClientModule } from '@angular/common/http';
@@ -51,13 +50,10 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     HeaderNavbarComponent,
     LandingComponent,
     CarManagementComponent,
-    CarManagementDialogComponent
+    CarManagementDialogComponent,
     OwnerManagementComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
-  ],
-  entryComponents: [
-    CarManagementDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +80,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     MatNativeDateModule
   ],
   entryComponents: [
+    CarManagementDialogComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog
   ],
