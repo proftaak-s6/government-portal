@@ -42,7 +42,6 @@ export class CarManagementDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitted form');
     this.dialogRef.close(this.data);
   }
 

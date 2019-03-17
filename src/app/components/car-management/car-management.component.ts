@@ -28,8 +28,10 @@ export class CarManagementComponent implements OnInit {
   }
 
   getData() {
-    this.dataSource = new MatTableDataSource<Car>(CAR_DATA);
-    this.dataSource.paginator = this.paginator;
+    this.carService.findAll().subscribe((cars: Car[]) => {
+      this.dataSource = new MatTableDataSource<Car>(cars);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   openAddCarDialog() {
@@ -39,9 +41,8 @@ export class CarManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: Car) => {
-      console.log(result);
       if (result) {
-        this.carService.save(result).subscribe(_ => this.getData);
+        this.carService.save(result).subscribe(_ => this.getData());
       } else {
         this.getData();
       }

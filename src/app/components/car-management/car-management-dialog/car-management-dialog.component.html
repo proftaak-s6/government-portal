@@ -1,5 +1,5 @@
 <div class="form-container">
-  <form (ngSubmit)="onSubmit()">
+  <form>
     <h3>Auto toevoegen</h3>
     <mat-form-field>
       <input matInput (focusout)="retrieveCarData($event.target.value)" placeholder="Kenteken" [(ngModel)]="this.data.LicensePlateNumber" name="licensPlateNumber"
@@ -18,8 +18,8 @@
       <input matInput placeholder="Label" [(ngModel)]="this.data.EnergyLabel" name="energyLabel" disabled />
     </mat-form-field>
     <div class="action-bar">
-      <button mat-button [mat-dialog-close]="true" color="warn">Annuleren</button>
-      <button class="save-button" mat-button color="primary" type="submit">Toevoegen</button>
+      <button mat-button (click)="onCancelClick()" color="warn" type="button">Annuleren</button>
+      <button class="save-button" mat-button (click)="onSubmit()" color="primary" type="submit">Toevoegen</button>
     </div>
   </form>
 </div>
