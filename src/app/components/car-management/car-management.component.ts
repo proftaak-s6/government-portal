@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
-import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
-import { Car } from 'src/entities/Car';
+import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
 import { CarService } from 'src/app/services/car/car.service';
+import { Car } from 'src/entities/Car';
 
 const CAR_DATA: Car[] = [
   new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
@@ -49,8 +49,19 @@ export class CarManagementComponent implements OnInit {
      });
   }
 
-  openDeleteCarDialog() {
-    console.log('clicked Delete Car');
+  openDeleteCarDialog(value: Car) {
+    const dialogRef = this.carDialog.open(CarManagementDeleteDialogComponent, {
+      width: '500px',
+      data: value
+    });
+
+    dialogRef.afterClosed().subscribe((result: Car) => {
+      if (result) {
+        this.carService.delete(result.id).subscribe(_ => this.getData());
+      } else {
+        this.getData();
+      }
+    });
   }
 
   applyFilter(filterValue: string) {

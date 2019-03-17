@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
+import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     OwnerManagementComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
+    CarManagementDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     MatNativeDateModule
   ],
   entryComponents: [
-    CarManagementDialogComponent,
+    CarManagementDeleteDialogComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog
   ],
