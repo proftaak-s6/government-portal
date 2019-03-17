@@ -6,7 +6,6 @@ import { PersonalInfo } from 'src/entities/PersonalInfo';
 import { OwnerManagementAddEditDialog } from './owner-management-addedit-dialog/owner-management-addedit-dialog.component';
 import { OwnerManagementDeleteDialog } from './owner-management-delete-dialog/owner-management-delete-dialog.component';
 import { OwnerManagementAssignCarDialog } from './owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
-import { CarService } from 'src/app/services/car/car.service';
 
 @Component({
   selector: 'rr-owner-management',
@@ -17,11 +16,10 @@ export class OwnerManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  private displayedColumns: string[] = ['fullName', 'address', 'country','numberofcars', 'actions'];
+  private displayedColumns: string[] = ['fullName', 'address', 'country', 'numberofcars', 'actions'];
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
   constructor(private ownerService: OwnerService,
-    private carService: CarService,
     public matDialog: MatDialog, ) { }
 
   ngOnInit() {
@@ -36,9 +34,10 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    const emptyOwner: Owner = new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""));
-
-    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, { width: '500px', data: emptyOwner });
+    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, {
+      width: '500px',
+      data: new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""))
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
