@@ -21,26 +21,32 @@ export class CarManagementComponent implements OnInit {
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor(
-    private carDialog: MatDialog,
-    private carService: CarService) { }
+  constructor(private carDialog: MatDialog, private carService: CarService) { }
 
   ngOnInit() {
     this.getData();
   }
 
   getData() {
-    this.dataSource = new MatTableDataSource<Car>(CAR_DATA);
-    this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
+    this.carService.findAll().subscribe((cars: Car[]) => {
+      this.dataSource = new MatTableDataSource<Car>(cars);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   openAddCarDialog() {
-    console.log('clicked Add Car');
-  }
+    const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
+      width: '400px',
+      data: new Car('', '', '', '', '', null)
+    });
 
-  openEditCarDialog() {
-    console.log('clicked Edit Car');
+    dialogRef.afterClosed().subscribe((result: Car) => {
+      if (result) {
+        this.carService.save(result).subscribe(_ => this.getData());
+      } else {
+        this.getData();
+      }
+     });
   }
 
   openDeleteCarDialog(value: Car) {
