@@ -1,3 +1,19 @@
-<p>
-  tracker-management-dialog works!
-</p>
+<div class="form-container">
+  <form>
+    <h3>Tracker toevoegen</h3>
+    <mat-form-field>
+      <input matInput placeholder="Fabrikant" [(ngModel)]="this.data.Manifacturer" name="manifacturer" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Activatiedatum" [matDatepicker]="myDatepicker"
+        [(ngModel)]="this.data.ActivationDate" name="myDatePicker">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+    <div class="action-bar">
+      <button mat-button (click)="onCancelClick()" color="warn" type="button">Annuleren</button>
+      <button class="save-button" mat-button (click)="onSubmit()" color="primary" type="submit">Opslaan</button>
+    </div>
+  </form>
+</div>

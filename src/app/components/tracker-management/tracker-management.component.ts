@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TrackerService } from 'src/app/services/tracker/tracker.service';
 import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Tracker } from 'src/entities/Tracker';
+import { TrackerManagementDeleteDialogComponent } from './tracker-management-delete-dialog/tracker-management-delete-dialog.component';
+import { TrackerManagementDialogComponent } from './tracker-management-dialog/tracker-management-dialog.component';
 
 @Component({
   selector: 'rr-tracker-management',
@@ -29,15 +31,37 @@ export class TrackerManagementComponent implements OnInit {
   }
 
   onAddClick() {
-
+    this.onEditClick(new Tracker("", new Date()))
   }
 
   onEditClick(tracker: Tracker) {
+    const dialogRef = this.matDialog.open(TrackerManagementDialogComponent, {
+      width: '500px',
+      data: tracker
+    });
 
+    dialogRef.afterClosed().subscribe((result: Tracker) => {
+      if (result) {
+        this.trackerService.save(result).subscribe(_ => this.getData());
+      } else {
+        this.getData();
+      }
+    });
   }
 
   onDeleteClick(tracker: Tracker) {
+    const dialogRef = this.matDialog.open(TrackerManagementDeleteDialogComponent, {
+      width: '500px',
+      data: tracker
+    });
 
+    dialogRef.afterClosed().subscribe((result: Tracker) => {
+      if (result) {
+        this.trackerService.delete(result.id).subscribe(_ => this.getData());
+      } else {
+        this.getData();
+      }
+    });
   }
 
 }
