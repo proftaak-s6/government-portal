@@ -17,6 +17,7 @@ import { CarManagementDeleteDialogComponent } from './components/car-management/
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
 import { OwnerManagementAddEditDialog } from './components/owner-management/owner-management-addedit-dialog/owner-management-addedit-dialog.component'
 import { OwnerManagementDeleteDialog } from'./components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementAssignCarDialog } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
 
 // Material Angular Components
 import {
@@ -41,6 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
 
+//Unsorted
+
 
 @NgModule({
   declarations: [
@@ -56,7 +59,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     OwnerManagementComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
-    CarManagementDeleteDialogComponent,
+    OwnerManagementAssignCarDialog,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     CarManagementDialogComponent,
     CarManagementDeleteDialogComponent,
     OwnerManagementAddEditDialog,
-    OwnerManagementDeleteDialog
+    OwnerManagementDeleteDialog,
+    OwnerManagementAssignCarDialog
   ],
   providers: [InMemoryDataService],
   bootstrap: [AppComponent]

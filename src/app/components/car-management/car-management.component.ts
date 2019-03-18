@@ -5,11 +5,6 @@ import { CarService } from 'src/app/services/car/car.service';
 import { Car } from 'src/entities/Car';
 import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
 
-const CAR_DATA: Car[] = [
-  new Car('TD-NR-98', 'Personenauto', '1299cc', 'Diesel', 'D', null),
-  new Car('32-LP-VV', 'Personenauto', '1199cc', 'Benzine', 'C', null)
-];
-
 @Component({
   selector: 'app-car-management',
   templateUrl: './car-management.component.html',
