@@ -41,6 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
+import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
+import { TrackerManagementDialogComponent } from './components/tracker-management/tracker-management-dialog/tracker-management-dialog.component';
+import { TrackerManagementDeleteDialogComponent } from './components/tracker-management/tracker-management-delete-dialog/tracker-management-delete-dialog.component';
 
 //Unsorted
 
@@ -60,6 +63,9 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
     OwnerManagementAssignCarDialog,
+    TrackerManagementComponent,
+    TrackerManagementDialogComponent,
+    TrackerManagementDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,9 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     CarManagementDeleteDialogComponent,
     OwnerManagementAddEditDialog,
     OwnerManagementDeleteDialog,
-    OwnerManagementAssignCarDialog
+    OwnerManagementAssignCarDialog,
+    TrackerManagementDialogComponent,
+    TrackerManagementDeleteDialogComponent
   ],
   providers: [InMemoryDataService],
   bootstrap: [AppComponent]
