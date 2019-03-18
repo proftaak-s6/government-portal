@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { CarManagementComponent } from './components/car-management/car-management.component';
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
+import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'auto-beheer', component: CarManagementComponent},
-  { path: 'rekeningrijder-beheer', component: OwnerManagementComponent},
+  { path: 'auto-beheer', component: CarManagementComponent },
+  { path: 'rekeningrijder-beheer', component: OwnerManagementComponent },
+  { path: 'tracker-beheer', component: TrackerManagementComponent }
 ];
 
 @NgModule({
