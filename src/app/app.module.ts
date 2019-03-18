@@ -10,14 +10,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderLogobarComponent } from './components/header-logobar/header-logobar.component';
 import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.component';
+// Landing
 import { LandingComponent } from './components/landing/landing.component';
+// Car-management
 import { CarManagementComponent } from './components/car-management/car-management.component';
 import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
 import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
+// Owner-management
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
 import { OwnerManagementAddEditDialog } from './components/owner-management/owner-management-addedit-dialog/owner-management-addedit-dialog.component'
-import { OwnerManagementDeleteDialog } from'./components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementDeleteDialog } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
 import { OwnerManagementAssignCarDialog } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
+// Tracker-management
+import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
+import { TrackerManagementDialogComponent } from './components/tracker-management/tracker-management-dialog/tracker-management-dialog.component';
+import { TrackerManagementDeleteDialogComponent } from './components/tracker-management/tracker-management-delete-dialog/tracker-management-delete-dialog.component';
 
 // Material Angular Components
 import {
@@ -41,11 +48,6 @@ import { HttpClientModule } from '@angular/common/http';
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
-import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
-import { TrackerManagementDialogComponent } from './components/tracker-management/tracker-management-dialog/tracker-management-dialog.component';
-import { TrackerManagementDeleteDialogComponent } from './components/tracker-management/tracker-management-delete-dialog/tracker-management-delete-dialog.component';
-
-//Unsorted
 
 
 @NgModule({
