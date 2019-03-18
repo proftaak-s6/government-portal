@@ -1,3 +1,5 @@
-<p>
-  tracker-management-delete-dialog works!
-</p>
+<h1 mat-dialog-title>Weet je zeker dat je deze tracker wil verwijderen?</h1>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onSaveClick()" color="warn">Ok</button>
+</div>
