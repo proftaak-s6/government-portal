@@ -32,7 +32,8 @@ import {
   MatPaginatorModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 // API
@@ -83,7 +84,8 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     MatPaginatorModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     CarManagementDialogComponent,
