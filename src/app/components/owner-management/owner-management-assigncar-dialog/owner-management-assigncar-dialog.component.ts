@@ -9,13 +9,13 @@ import { CarService } from 'src/app/services/car/car.service';
   templateUrl: './owner-management-assigncar-dialog.component.html',
   styleUrls: ['./owner-management-assigncar-dialog.component.less']
 })
-export class OwnerManagementAssignCarDialog implements OnInit {
+export class OwnerManagementAssignCarDialogComponent implements OnInit {
 
   private cars: Car[];
   private selectedCar: Car;
 
   constructor(
-    public dialogRef: MatDialogRef<OwnerManagementAssignCarDialog>,
+    public dialogRef: MatDialogRef<OwnerManagementAssignCarDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Owner,
     private carService: CarService) { }
 

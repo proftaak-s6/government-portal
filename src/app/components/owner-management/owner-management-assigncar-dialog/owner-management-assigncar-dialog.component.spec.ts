@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OwnerManagementAssignCarDialog } from './owner-management-assigncar-dialog.component';
+import { OwnerManagementAssignCarDialogComponent } from './owner-management-assigncar-dialog.component';
 
 describe('OwnerManagementAssigncarDialogComponent', () => {
-  let component: OwnerManagementAssignCarDialog;
-  let fixture: ComponentFixture<OwnerManagementAssignCarDialog>;
+  let component: OwnerManagementAssignCarDialogComponent;
+  let fixture: ComponentFixture<OwnerManagementAssignCarDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OwnerManagementAssignCarDialog ]
+      declarations: [ OwnerManagementAssignCarDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OwnerManagementAssignCarDialog);
+    fixture = TestBed.createComponent(OwnerManagementAssignCarDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

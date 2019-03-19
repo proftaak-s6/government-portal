@@ -18,9 +18,9 @@ import { CarManagementCreateDialogComponent } from './components/car-management/
 import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
 // Owner-management
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
-import { OwnerManagementDialog } from './components/owner-management/owner-management-dialog/owner-management-dialog.component'
-import { OwnerManagementDeleteDialog } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
-import { OwnerManagementAssignCarDialog } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
+import { OwnerManagementDialogComponent } from './components/owner-management/owner-management-dialog/owner-management-dialog.component'
+import { OwnerManagementDeleteDialogComponent } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementAssignCarDialogComponent } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
 // Tracker-management
 import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
 import { TrackerManagementDialogComponent } from './components/tracker-management/tracker-management-dialog/tracker-management-dialog.component';
@@ -63,9 +63,9 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     CarManagementCreateDialogComponent,
     CarManagementDeleteDialogComponent,
     OwnerManagementComponent,
-    OwnerManagementDialog,
-    OwnerManagementDeleteDialog,
-    OwnerManagementAssignCarDialog,
+    OwnerManagementDialogComponent,
+    OwnerManagementDeleteDialogComponent,
+    OwnerManagementAssignCarDialogComponent,
     TrackerManagementComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent,
@@ -98,9 +98,9 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
   entryComponents: [
     CarManagementCreateDialogComponent,
     CarManagementDeleteDialogComponent,
-    OwnerManagementDialog,
-    OwnerManagementDeleteDialog,
-    OwnerManagementAssignCarDialog,
+    OwnerManagementDialogComponent,
+    OwnerManagementDeleteDialogComponent,
+    OwnerManagementAssignCarDialogComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent
   ],
