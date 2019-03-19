@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import { Owner } from 'src/entities/Owner';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { PersonalInfo } from 'src/entities/PersonalInfo';
@@ -20,7 +20,8 @@ export class OwnerManagementComponent implements OnInit {
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
   constructor(private ownerService: OwnerService,
-    public matDialog: MatDialog, ) { }
+    public matDialog: MatDialog,
+    private snackBar: MatSnackBar, ) { }
 
   ngOnInit() {
     this.getData();
@@ -77,17 +78,28 @@ export class OwnerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       // If we received a result and the owner doesn't already own this car
-      if (result && owner.Cars.filter(car => car.id === result.id).length! > 0) {
-        // Assign the car to the owner
-        owner.Cars.push(result);
+      if (result) {
+        if (owner.Cars.filter(car => car.id === result.id).length === 0) {
+          // Assign the car to the owner
+          owner.Cars.push(result);
 
-        // Save the owner
-        this.ownerService.save(owner).subscribe(x => {
-          // Refresh dataset
-          this.getData();
-        });
-
+          // Save the owner
+          this.ownerService.save(owner).subscribe(x => {
+            // Refresh dataset
+            this.getData();
+          });
+        } else {
+          this.notify("Deze auto is al toegewezen aan een bestuurder")
+        }
+      } else {
+        this.notify("Geen auto geselecteerd");
       }
+    });
+  }
+
+  private notify(message: string, secondsOfWaiting: number = 5) {
+    this.snackBar.open(message, "close", {
+      duration: secondsOfWaiting * 1000,
     });
   }
 }
