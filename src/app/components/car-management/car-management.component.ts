@@ -3,10 +3,10 @@ import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
 import { CarService } from 'src/app/services/car/car.service';
 import { Car } from 'src/entities/Car';
-import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
+import { CarManagementCreateDialogComponent } from './car-management-create-dialog/car-management-create-dialog.component';
 
 @Component({
-  selector: 'app-car-management',
+  selector: 'rr-car-management',
   templateUrl: './car-management.component.html',
   styleUrls: ['./car-management.component.less']
 })
@@ -31,7 +31,7 @@ export class CarManagementComponent implements OnInit {
   }
 
   openAddCarDialog() {
-    const dialogRef = this.matDialog.open(CarManagementDialogComponent, {
+    const dialogRef = this.matDialog.open(CarManagementCreateDialogComponent, {
       width: '400px',
       data: new Car('', '', '', '', '', null)
     });

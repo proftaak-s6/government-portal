@@ -3,7 +3,7 @@ import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angul
 import { Owner } from 'src/entities/Owner';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { PersonalInfo } from 'src/entities/PersonalInfo';
-import { OwnerManagementAddEditDialog } from './owner-management-addedit-dialog/owner-management-addedit-dialog.component';
+import { OwnerManagementDialog } from './owner-management-dialog/owner-management-dialog.component';
 import { OwnerManagementDeleteDialog } from './owner-management-delete-dialog/owner-management-delete-dialog.component';
 import { OwnerManagementAssignCarDialog } from './owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
 
@@ -35,7 +35,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, {
+    const dialogRef = this.matDialog.open(OwnerManagementDialog, {
       width: '500px',
       data: new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""))
     });
@@ -50,7 +50,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openEditOwnerDialog(owner: Owner) {
-    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, { width: '500px', data: owner, });
+    const dialogRef = this.matDialog.open(OwnerManagementDialog, { width: '500px', data: owner, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
