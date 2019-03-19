@@ -1,0 +1,25 @@
+<div class="navbar-container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div class="breadcrumbs-container">
+        <div class="breadcrumb-home" [routerLink]="['/']">
+          Home
+        </div>
+      </div>
+      
+      <span class="navbar-spacer"></span>
+
+      <div class="quicklinks-container" [routerLink]="['/auto-beheer']">
+        <span>Auto's</span>
+      </div>
+
+      <div class="quicklinks-container" [routerLink]="['/rekeningrijder-beheer']">
+        <span>Rekeningrijders</span>
+      </div>
+
+      <div class="quicklinks-container" [routerLink]="['/tracker-beheer']">
+        <span>Trackers</span>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

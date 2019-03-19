@@ -1,0 +1,82 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$rr-donkerblauw: (
+    50 : #e1edf3,
+    100 : #b3d2e1,
+    200 : #80b4cd,
+    300 : #4d95b9,
+    400 : #277faa,
+    500 : #01689b,
+    600 : #016093,
+    700 : #015589,
+    800 : #014b7f,
+    900 : #003a6d,
+    A100 : #9cc8ff,
+    A200 : #69acff,
+    A400 : #3690ff,
+    A700 : #1d82ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$rr-donkergeel: (
+    50 : #fff6e3,
+    100 : #ffe9b8,
+    200 : #ffdb89,
+    300 : #ffcc59,
+    400 : #ffc136,
+    500 : #ffb612,
+    600 : #ffaf10,
+    700 : #ffa60d,
+    800 : #ff9e0a,
+    900 : #ff8e05,
+    A100 : #ffffff,
+    A200 : #fff9f3,
+    A400 : #ffe0c0,
+    A700 : #ffd3a7,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+$rr-app-primary: mat-palette($rr-donkerblauw);
+$rr-app-accent:  mat-palette($rr-donkergeel);
+
+// The warn palette is optional (defaults to red).
+$rr-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$rr-app-theme: mat-light-theme($rr-app-primary, $rr-app-accent, $rr-app-warn);
+
+@include angular-material-theme($rr-app-theme);
