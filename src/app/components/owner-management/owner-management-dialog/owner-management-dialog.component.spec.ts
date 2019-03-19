@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OwnerManagementAddEditDialog } from './owner-management-addedit-dialog.component';
+import { OwnerManagementDialog } from './owner-management-dialog.component';
 
 describe('OwnerManagementAddeditDialogComponent', () => {
-  let component: OwnerManagementAddEditDialog;
-  let fixture: ComponentFixture<OwnerManagementAddEditDialog>;
+  let component: OwnerManagementDialog;
+  let fixture: ComponentFixture<OwnerManagementDialog>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OwnerManagementAddEditDialog ]
+      declarations: [ OwnerManagementDialog ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OwnerManagementAddEditDialog);
+    fixture = TestBed.createComponent(OwnerManagementDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,10 +7,10 @@ import { Owner } from 'src/entities/Owner';
   templateUrl: './owner-management-addedit-dialog.component.html',
   styleUrls: ['./owner-management-addedit-dialog.component.less']
 })
-export class OwnerManagementAddEditDialog implements OnInit {
+export class OwnerManagementAddDialog implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<OwnerManagementAddEditDialog>,
+    public dialogRef: MatDialogRef<OwnerManagementAddDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Owner) { }
 
   ngOnInit() {
