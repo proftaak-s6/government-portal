@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm run build:production
 
 # Stage 2: Serve
 FROM nginx:1.15.9-alpine as nginx
