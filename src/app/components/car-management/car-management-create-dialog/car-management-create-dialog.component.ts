@@ -5,15 +5,15 @@ import { RdwService, RdwCarResponse, RdwFuelResponse } from 'src/app/services/rd
 import { Car } from 'src/entities/Car';
 
 @Component({
-  selector: 'app-car-management-dialog',
-  templateUrl: './car-management-dialog.component.html',
-  styleUrls: ['./car-management-dialog.component.less']
+  selector: 'app-car-management-create-dialog',
+  templateUrl: './car-management-create-dialog.component.html',
+  styleUrls: ['./car-management-create-dialog.component.less']
 })
-export class CarManagementDialogComponent implements OnInit {
+export class CarManagementCreateDialogComponent implements OnInit {
 
   constructor(
     private rdwService: RdwService,
-    public dialogRef: MatDialogRef<CarManagementDialogComponent>,
+    public dialogRef: MatDialogRef<CarManagementCreateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Car
   ) {
 

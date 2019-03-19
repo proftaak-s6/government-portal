@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarManagementDialogComponent } from './car-management-dialog.component';
+import { CarManagementCreateDialogComponent } from './car-management-create-dialog.component';
 
 describe('CarManagementDialogComponent', () => {
-  let component: CarManagementDialogComponent;
-  let fixture: ComponentFixture<CarManagementDialogComponent>;
+  let component: CarManagementCreateDialogComponent;
+  let fixture: ComponentFixture<CarManagementCreateDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarManagementDialogComponent ]
+      declarations: [ CarManagementCreateDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarManagementDialogComponent);
+    fixture = TestBed.createComponent(CarManagementCreateDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

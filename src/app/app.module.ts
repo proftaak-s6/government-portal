@@ -14,13 +14,13 @@ import { HeaderNavbarComponent } from './components/header-navbar/header-navbar.
 import { LandingComponent } from './components/landing/landing.component';
 // Car-management
 import { CarManagementComponent } from './components/car-management/car-management.component';
-import { CarManagementDialogComponent } from './components/car-management/car-management-dialog/car-management-dialog.component';
+import { CarManagementCreateDialogComponent } from './components/car-management/car-management-create-dialog/car-management-create-dialog.component';
 import { CarManagementDeleteDialogComponent } from './components/car-management/car-management-delete-dialog/car-management-delete-dialog.component';
 // Owner-management
 import { OwnerManagementComponent } from './components/owner-management/owner-management.component';
-import { OwnerManagementAddEditDialog } from './components/owner-management/owner-management-addedit-dialog/owner-management-addedit-dialog.component'
-import { OwnerManagementDeleteDialog } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
-import { OwnerManagementAssignCarDialog } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
+import { OwnerManagementDialogComponent } from './components/owner-management/owner-management-dialog/owner-management-dialog.component'
+import { OwnerManagementDeleteDialogComponent } from './components/owner-management/owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementAssignCarDialogComponent } from './components/owner-management/owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
 // Tracker-management
 import { TrackerManagementComponent } from './components/tracker-management/tracker-management.component';
 import { TrackerManagementDialogComponent } from './components/tracker-management/tracker-management-dialog/tracker-management-dialog.component';
@@ -60,12 +60,12 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     HeaderNavbarComponent,
     LandingComponent,
     CarManagementComponent,
-    CarManagementDialogComponent,
+    CarManagementCreateDialogComponent,
     CarManagementDeleteDialogComponent,
     OwnerManagementComponent,
-    OwnerManagementAddEditDialog,
-    OwnerManagementDeleteDialog,
-    OwnerManagementAssignCarDialog,
+    OwnerManagementDialogComponent,
+    OwnerManagementDeleteDialogComponent,
+    OwnerManagementAssignCarDialogComponent,
     TrackerManagementComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent,
@@ -96,11 +96,11 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     MatSnackBarModule
   ],
   entryComponents: [
-    CarManagementDialogComponent,
+    CarManagementCreateDialogComponent,
     CarManagementDeleteDialogComponent,
-    OwnerManagementAddEditDialog,
-    OwnerManagementDeleteDialog,
-    OwnerManagementAssignCarDialog,
+    OwnerManagementDialogComponent,
+    OwnerManagementDeleteDialogComponent,
+    OwnerManagementAssignCarDialogComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent
   ],

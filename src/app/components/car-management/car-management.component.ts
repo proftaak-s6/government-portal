@@ -1,23 +1,26 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
 import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
 import { CarService } from 'src/app/services/car/car.service';
 import { Car } from 'src/entities/Car';
-import { CarManagementDialogComponent } from './car-management-dialog/car-management-dialog.component';
+import { CarManagementCreateDialogComponent } from './car-management-create-dialog/car-management-create-dialog.component';
 
 @Component({
-  selector: 'app-car-management',
+  selector: 'rr-car-management',
   templateUrl: './car-management.component.html',
   styleUrls: ['./car-management.component.less']
 })
 export class CarManagementComponent implements OnInit {
 
-  @ViewChild(MatPaginator)paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor(private carDialog: MatDialog, private carService: CarService) { }
+  constructor(
+    private matDialog: MatDialog,
+    private matSnackBar: MatSnackBar,
+    private carService: CarService) { }
 
   ngOnInit() {
     this.getData();
@@ -31,29 +34,35 @@ export class CarManagementComponent implements OnInit {
   }
 
   openAddCarDialog() {
-    const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
+    const dialogRef = this.matDialog.open(CarManagementCreateDialogComponent, {
       width: '400px',
       data: new Car('', '', '', '', '', null)
     });
 
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
-        this.carService.save(result).subscribe(_ => this.getData());
+        this.carService.save(result).subscribe(_ => {
+          this.notify("De auto met kentekenplaat " + result.LicensePlateNumber + " is toegevoegd.")
+          this.getData()
+        });
       } else {
         this.getData();
       }
-     });
+    });
   }
 
   openDeleteCarDialog(value: Car) {
-    const dialogRef = this.carDialog.open(CarManagementDeleteDialogComponent, {
+    const dialogRef = this.matDialog.open(CarManagementDeleteDialogComponent, {
       width: '500px',
       data: value
     });
 
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
-        this.carService.delete(result.id).subscribe(_ => this.getData());
+        this.carService.delete(result.id).subscribe(_ => {
+          this.notify("De auto met kentekenplaat " + value.LicensePlateNumber + " is succesvol verwijderd.")
+          this.getData();
+        });
       } else {
         this.getData();
       }
@@ -68,4 +77,9 @@ export class CarManagementComponent implements OnInit {
     }
   }
 
+  private notify(message: string, secondsOfWaiting: number = 5) {
+    this.matSnackBar.open(message, "close", {
+      duration: secondsOfWaiting * 1000,
+    });
+  }
 }

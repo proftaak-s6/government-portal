@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TrackerService } from 'src/app/services/tracker/tracker.service';
-import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Tracker } from 'src/entities/Tracker';
 import { TrackerManagementDeleteDialogComponent } from './tracker-management-delete-dialog/tracker-management-delete-dialog.component';
 import { TrackerManagementDialogComponent } from './tracker-management-dialog/tracker-management-dialog.component';
@@ -16,8 +16,10 @@ export class TrackerManagementComponent implements OnInit {
   private dataSource: MatTableDataSource<Tracker> = new MatTableDataSource<Tracker>();
   private displayedColumns: string[] = ['manifacturer', 'activationDate', 'actions']
 
-  constructor(private trackerService: TrackerService,
-    private matDialog: MatDialog) { }
+  constructor(
+    private trackerService: TrackerService,
+    private matDialog: MatDialog,
+    private matSnackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getData();
@@ -42,7 +44,10 @@ export class TrackerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Tracker) => {
       if (result) {
-        this.trackerService.save(result).subscribe(_ => this.getData());
+        this.trackerService.save(result).subscribe(_ => {
+          this.notify("De tracker is opgeslagen.");
+          this.getData()
+        });
       } else {
         this.getData();
       }
@@ -57,11 +62,19 @@ export class TrackerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Tracker) => {
       if (result) {
-        this.trackerService.delete(result.id).subscribe(_ => this.getData());
+        this.trackerService.delete(result.id).subscribe(_ => {
+          this.notify("De tracker is succesvol verwijderd.");
+          this.getData();
+        });
       } else {
         this.getData();
       }
     });
   }
 
+  private notify(message: string, secondsOfWaiting: number = 5) {
+    this.matSnackBar.open(message, "close", {
+      duration: secondsOfWaiting * 1000,
+    });
+  }
 }

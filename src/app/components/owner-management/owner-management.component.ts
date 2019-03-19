@@ -3,9 +3,9 @@ import { MatPaginator, MatTableDataSource, MatDialog, MatSnackBar } from '@angul
 import { Owner } from 'src/entities/Owner';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { PersonalInfo } from 'src/entities/PersonalInfo';
-import { OwnerManagementAddEditDialog } from './owner-management-addedit-dialog/owner-management-addedit-dialog.component';
-import { OwnerManagementDeleteDialog } from './owner-management-delete-dialog/owner-management-delete-dialog.component';
-import { OwnerManagementAssignCarDialog } from './owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
+import { OwnerManagementDialogComponent } from './owner-management-dialog/owner-management-dialog.component';
+import { OwnerManagementDeleteDialogComponent } from './owner-management-delete-dialog/owner-management-delete-dialog.component';
+import { OwnerManagementAssignCarDialogComponent } from './owner-management-assigncar-dialog/owner-management-assigncar-dialog.component';
 
 @Component({
   selector: 'rr-owner-management',
@@ -19,9 +19,10 @@ export class OwnerManagementComponent implements OnInit {
   private displayedColumns: string[] = ['fullName', 'address', 'country', 'numberofcars', 'actions'];
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
-  constructor(private ownerService: OwnerService,
+  constructor(
+    private ownerService: OwnerService,
     public matDialog: MatDialog,
-    private snackBar: MatSnackBar, ) { }
+    private matSnackBar: MatSnackBar, ) { }
 
   ngOnInit() {
     this.getData();
@@ -35,26 +36,18 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, {
-      width: '500px',
-      data: new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""))
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.ownerService.save(result).subscribe(x => this.getData());
-      } else {
-        this.getData();
-      }
-    });
+    this.openEditOwnerDialog(new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", "")));
   }
 
   openEditOwnerDialog(owner: Owner) {
-    const dialogRef = this.matDialog.open(OwnerManagementAddEditDialog, { width: '500px', data: owner, });
+    const dialogRef = this.matDialog.open(OwnerManagementDialogComponent, { width: '500px', data: owner, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.ownerService.save(result).subscribe(x => this.getData());
+        this.ownerService.save(result).subscribe(_ => {
+          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol opgeslagen.");
+          this.getData();
+        });
       } else {
         this.getData();
       }
@@ -62,11 +55,14 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openDeleteOwnerDialog(owner: Owner) {
-    const dialogRef = this.matDialog.open(OwnerManagementDeleteDialog, { width: '500px', data: owner, });
+    const dialogRef = this.matDialog.open(OwnerManagementDeleteDialogComponent, { width: '500px', data: owner, });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.ownerService.delete(result.id).subscribe(x => this.getData());
+        this.ownerService.delete(result.id).subscribe(_ => {
+          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol verwijderd.");
+          this.getData();
+        });
       } else {
         this.getData();
       }
@@ -74,7 +70,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAssignCarDialog(owner: Owner) {
-    const dialogRef = this.matDialog.open(OwnerManagementAssignCarDialog, { width: '500px', data: owner });
+    const dialogRef = this.matDialog.open(OwnerManagementAssignCarDialogComponent, { width: '500px', data: owner });
 
     dialogRef.afterClosed().subscribe(result => {
       // If we received a result and the owner doesn't already own this car
@@ -98,7 +94,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   private notify(message: string, secondsOfWaiting: number = 5) {
-    this.snackBar.open(message, "close", {
+    this.matSnackBar.open(message, "close", {
       duration: secondsOfWaiting * 1000,
     });
   }
