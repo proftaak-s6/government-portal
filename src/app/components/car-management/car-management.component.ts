@@ -17,7 +17,7 @@ export class CarManagementComponent implements OnInit {
   displayedColumns: string[] = ['licensePlateNumber', 'carType', 'engineType', 'fuelType', 'energyLabel', 'actions'];
   public dataSource: MatTableDataSource<Car>;
 
-  constructor(private carDialog: MatDialog, private carService: CarService) { }
+  constructor(private matDialog: MatDialog, private carService: CarService) { }
 
   ngOnInit() {
     this.getData();
@@ -31,7 +31,7 @@ export class CarManagementComponent implements OnInit {
   }
 
   openAddCarDialog() {
-    const dialogRef = this.carDialog.open(CarManagementDialogComponent, {
+    const dialogRef = this.matDialog.open(CarManagementDialogComponent, {
       width: '400px',
       data: new Car('', '', '', '', '', null)
     });
@@ -46,7 +46,7 @@ export class CarManagementComponent implements OnInit {
   }
 
   openDeleteCarDialog(value: Car) {
-    const dialogRef = this.carDialog.open(CarManagementDeleteDialogComponent, {
+    const dialogRef = this.matDialog.open(CarManagementDeleteDialogComponent, {
       width: '500px',
       data: value
     });
