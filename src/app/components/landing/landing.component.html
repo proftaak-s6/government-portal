@@ -2,8 +2,8 @@
   <div class="content-wrapper">
     <div class="content">
       <ul>
-        <li>
-          <a href="#">
+        <li [routerLink]="['/']">
+          <a>
             <div class="item-content">
               <h3>Algemeen</h3>
               <p>Algemene informatie over het overheidsportaal</p>
@@ -11,7 +11,7 @@
           </a>
         </li>
         <li>
-          <a href="/auto-beheer">
+          <a [routerLink]="['/auto-beheer']">
             <div class="item-content">
               <h3>Auto beheer</h3>
               <p>Hier kunnen alle actieve auto's worden beheerd</p>
@@ -19,7 +19,7 @@
           </a>
         </li>
         <li>
-          <a href="/rekeningrijder-beheer">
+          <a [routerLink]="['/rekeningrijder-beheer']">
             <div class="item-content">
               <h3>Rekeningrijder beheer</h3>
               <p>Hier kunnen alle actieve rekeningrijders worden beheerd</p>
@@ -27,7 +27,7 @@
           </a>
         </li>
         <li>
-          <a href="/tracker-beheer">
+          <a [routerLink]="['/tracker-beheer']">
             <div class="item-content">
               <h3>Cartracker beheer</h3>
               <p>Hier kunnen alle actieve cartrackers worden beheerd</p>
