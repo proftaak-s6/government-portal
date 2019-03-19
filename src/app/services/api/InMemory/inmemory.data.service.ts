@@ -4,6 +4,7 @@ import { PersonalInfo } from 'src/entities/PersonalInfo';
 import { Car } from 'src/entities/Car';
 import { Owner } from 'src/entities/Owner';
 import { Tracker } from 'src/entities/Tracker';
+import { RdwCarResponse, RdwFuelResponse } from '../../rdw/rdw.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,11 +29,25 @@ export class InMemoryDataService implements InMemoryDbService {
     const trackers: Tracker[] = [bono_Tracker, reinoud_Tracker, niels_Tracker];
     const cars: Car[] = [bono_Car, reinoud_Car, niels_Car];
     const owners: Owner[] = [bono_Owner, reinoud_Owner];
+    const rdw_car: RdwCarResponse[] = [
+      { cilinderinhoud: "1200", kenteken: "22LDAP", voertuigsoort: "Personenauto", zuinigheidslabel: "B" },
+      { cilinderinhoud: "1000", kenteken: "12PTRV", voertuigsoort: "Personenauto", zuinigheidslabel: "B" },
+      { cilinderinhoud: "900", kenteken: "HPTT12", voertuigsoort: "Bus", zuinigheidslabel: "B" },
+      { cilinderinhoud: "1400", kenteken: "GP23HH", voertuigsoort: "Personenauto", zuinigheidslabel: "B" }
+    ];
+    const rdw_fuel: RdwFuelResponse[] = [
+      { kenteken: '22LDAP', brandstof_omschrijving: "Benzine" },
+      { kenteken: '12PTRV', brandstof_omschrijving: "Benzine" },
+      { kenteken: 'HPTT12', brandstof_omschrijving: "Gas" },
+      { kenteken: 'GP23HH', brandstof_omschrijving: "Diesel" },
+    ]
 
     return {
       cars: cars,
       owners: owners,
-      trackers: trackers
+      trackers: trackers,
+      rdw_car: rdw_car,
+      rdw_fuel: rdw_fuel
     };
   }
 }

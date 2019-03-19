@@ -12,13 +12,14 @@ export interface RdwCarResponse {
 }
 
 export interface RdwFuelResponse {
+  kenteken: string;
   brandstof_omschrijving: string;
 }
 
 const httpOptions = {
   headers: new HttpHeaders({
     'X-App-Token': '6LlkP0MqOKimMkNdqipMXxOZN',
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -27,8 +28,11 @@ const httpOptions = {
 })
 export class RdwService {
 
-  private generalUrl = 'https://opendata.rdw.nl/resource/m9d7-ebf2.json';
-  private fuelUrl = 'https://opendata.rdw.nl/resource/8ys7-d773.json';
+  //private generalUrl = 'https://opendata.rdw.nl/resource/m9d7-ebf2.json';
+  //private fuelUrl = 'https://opendata.rdw.nl/resource/8ys7-d773.json';
+
+  private generalUrl = '/api/rdw_car';
+  private fuelUrl = '/api/rdw_fuel';
 
   constructor(private http: HttpClient) { }
 
@@ -52,6 +56,7 @@ export class RdwService {
       .pipe(
         map((value: RdwFuelResponse[]) => {
           return {
+            kenteken: value[0].kenteken,
             brandstof_omschrijving: value[0].brandstof_omschrijving
           };
         })
