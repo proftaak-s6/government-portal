@@ -19,9 +19,10 @@ export class OwnerManagementComponent implements OnInit {
   private displayedColumns: string[] = ['fullName', 'address', 'country', 'numberofcars', 'actions'];
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
-  constructor(private ownerService: OwnerService,
+  constructor(
+    private ownerService: OwnerService,
     public matDialog: MatDialog,
-    private snackBar: MatSnackBar, ) { }
+    private matSnackBar: MatSnackBar, ) { }
 
   ngOnInit() {
     this.getData();
@@ -35,18 +36,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    const dialogRef = this.matDialog.open(OwnerManagementDialogComponent, {
-      width: '500px',
-      data: new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", ""))
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.ownerService.save(result).subscribe(x => this.getData());
-      } else {
-        this.getData();
-      }
-    });
+    this.openEditOwnerDialog(new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", "")));
   }
 
   openEditOwnerDialog(owner: Owner) {
@@ -54,7 +44,10 @@ export class OwnerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.ownerService.save(result).subscribe(x => this.getData());
+        this.ownerService.save(result).subscribe(_ => {
+          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol opgeslagen.");
+          this.getData();
+        });
       } else {
         this.getData();
       }
@@ -66,7 +59,10 @@ export class OwnerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.ownerService.delete(result.id).subscribe(x => this.getData());
+        this.ownerService.delete(result.id).subscribe(_ => {
+          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol verwijderd.");
+          this.getData();
+        });
       } else {
         this.getData();
       }
@@ -98,7 +94,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   private notify(message: string, secondsOfWaiting: number = 5) {
-    this.snackBar.open(message, "close", {
+    this.matSnackBar.open(message, "close", {
       duration: secondsOfWaiting * 1000,
     });
   }
