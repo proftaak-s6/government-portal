@@ -16,7 +16,7 @@ export class OwnerManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  private displayedColumns: string[] = ['fullName', 'address', 'country', 'numberofcars', 'actions'];
+  private displayedColumns: string[] = ['emailAddress', 'fullName', 'address', 'country', 'numberofcars', 'actions'];
   private dataSource: MatTableDataSource<Owner> = new MatTableDataSource<Owner>();
 
   constructor(
@@ -36,7 +36,7 @@ export class OwnerManagementComponent implements OnInit {
   }
 
   openAddOwnerDialog() {
-    this.openEditOwnerDialog(new Owner(new PersonalInfo("", "", new Date(), "", "", "", "", "")));
+    this.openEditOwnerDialog(new Owner("", new PersonalInfo("", "", new Date(), "", "", "", "", "")));
   }
 
   openEditOwnerDialog(owner: Owner) {

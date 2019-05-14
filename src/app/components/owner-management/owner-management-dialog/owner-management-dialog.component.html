@@ -1,5 +1,8 @@
 <h1 mat-dialog-title>Rekeningrijder</h1>
 <div mat-dialog-content>
+  <mat-form-field class="emailAddress-form-field">
+    <input matInput placeholder="Email adres" [(ngModel)]="this.data.emailAddress">
+  </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Voornaam" [(ngModel)]="this.data.PersonalInfo.FirstName">
   </mat-form-field>

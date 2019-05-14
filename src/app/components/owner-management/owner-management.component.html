@@ -6,6 +6,12 @@
     </button>
   </div>
   <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="emailAddress">
+      <th mat-header-cell *matHeaderCellDef> Email adres </th>
+      <td mat-cell *matCellDef="let element"> {{element.emailAddress}}
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="fullName">
       <th mat-header-cell *matHeaderCellDef> Naam </th>
       <td mat-cell *matCellDef="let element"> {{element.PersonalInfo.FirstName}} {{element.PersonalInfo.LastName}}
@@ -25,7 +31,7 @@
     </ng-container>
 
     <ng-container matColumnDef="numberofcars">
-      <th mat-header-cell *matHeaderCellDef> Aantal auto's in bezit </th>
+      <th mat-header-cell *matHeaderCellDef> # Auto's </th>
       <td mat-cell *matCellDef="let element"> {{element.Cars.length}}</td>
     </ng-container>
 
