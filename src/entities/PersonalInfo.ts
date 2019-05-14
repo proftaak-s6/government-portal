@@ -1,15 +1,14 @@
-import { UUID } from 'angular2-uuid';
 import { BaseEntity } from './BaseEntity';
 
 export class PersonalInfo extends BaseEntity {
-    public FirstName: string;
-    public LastName: string;
-    public DateOfBirth: Date;
-    public Streetname: string;
-    public Housenumber: string;
-    public Zipcode: string;
-    public City: string;
-    public Country: string;
+    public firstName: string;
+    public lastName: string;
+    public dateOfBirth: Date;
+    public streetname: string;
+    public housenumber: string;
+    public zipcode: string;
+    public city: string;
+    public country: string;
 
     constructor(
         firstName: string,
@@ -22,13 +21,13 @@ export class PersonalInfo extends BaseEntity {
         country: string
     ) {
         super();
-        this.FirstName = firstName;
-        this.LastName = lastName;
-        this.DateOfBirth = dateOfBirth;
-        this.Streetname = streetname;
-        this.Housenumber = housenumber;
-        this.Zipcode = zipcode;
-        this.City = city;
-        this.Country = country;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.streetname = streetname;
+        this.housenumber = housenumber;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
     }
 }

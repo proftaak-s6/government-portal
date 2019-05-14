@@ -1,14 +1,13 @@
-import { UUID } from 'angular2-uuid';
 import { Tracker } from './Tracker';
 import { BaseEntity } from './BaseEntity';
 
 export class Car extends BaseEntity {
-    public LicensePlateNumber: string;
-    public VehicleType: string;
-    public EngineType: string;
-    public FuelType: string;
-    public EnergyLabel: string;
-    public Tracker: Tracker;
+    public licensePlateNumber: string;
+    public vehicleType: string;
+    public engineType: string;
+    public fuelType: string;
+    public energyLabel: string;
+    public tracker: Tracker;
 
     constructor(
         licensePlateNumber: string,
@@ -19,11 +18,11 @@ export class Car extends BaseEntity {
         tracker: Tracker,
     ) {
         super();
-        this.LicensePlateNumber = licensePlateNumber;
-        this.VehicleType = vehicleType;
-        this.EngineType = engineType;
-        this.FuelType = fuelType;
-        this.EnergyLabel = energyLabel;
-        this.Tracker = tracker;
+        this.licensePlateNumber = licensePlateNumber;
+        this.vehicleType = vehicleType;
+        this.engineType = engineType;
+        this.fuelType = fuelType;
+        this.energyLabel = energyLabel;
+        this.tracker = tracker;
     }
 }
