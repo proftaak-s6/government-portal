@@ -42,7 +42,7 @@ export class CarManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
         this.carService.save(result).subscribe(_ => {
-          this.notify("De auto met kentekenplaat " + result.LicensePlateNumber + " is toegevoegd.")
+          this.notify("De auto met kentekenplaat " + result.licensePlateNumber + " is toegevoegd.")
           this.getData()
         });
       } else {
@@ -60,7 +60,7 @@ export class CarManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
         this.carService.delete(result.id).subscribe(_ => {
-          this.notify("De auto met kentekenplaat " + value.LicensePlateNumber + " is succesvol verwijderd.")
+          this.notify("De auto met kentekenplaat " + value.licensePlateNumber + " is succesvol verwijderd.")
           this.getData();
         });
       } else {

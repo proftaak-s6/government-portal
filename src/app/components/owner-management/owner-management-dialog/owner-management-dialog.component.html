@@ -1,28 +1,28 @@
 <h1 mat-dialog-title>Rekeningrijder</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput placeholder="Voornaam" [(ngModel)]="this.data.PersonalInfo.FirstName">
+    <input matInput placeholder="Voornaam" [(ngModel)]="this.data.personalInfo.firstName">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Achternaam" [(ngModel)]="this.data.PersonalInfo.LastName">
+    <input matInput placeholder="Achternaam" [(ngModel)]="this.data.personalInfo.lastName">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Straatnaam" [(ngModel)]="this.data.PersonalInfo.Streetname">
+    <input matInput placeholder="Straatnaam" [(ngModel)]="this.data.personalInfo.streetname">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Huisnummer" [(ngModel)]="this.data.PersonalInfo.Housenumber">
+    <input matInput placeholder="Huisnummer" [(ngModel)]="this.data.personalInfo.housenumber">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Postcode" [(ngModel)]="this.data.PersonalInfo.Zipcode">
+    <input matInput placeholder="Postcode" [(ngModel)]="this.data.personalInfo.zipcode">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Stad" [(ngModel)]="this.data.PersonalInfo.City">
+    <input matInput placeholder="Stad" [(ngModel)]="this.data.personalInfo.city">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Land" [(ngModel)]="this.data.PersonalInfo.Country">
+    <input matInput placeholder="Land" [(ngModel)]="this.data.personalInfo.country">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Geboortedatum" [matDatepicker]="myDatepicker" [(ngModel)]="this.data.PersonalInfo.DateOfBirth">
+    <input matInput placeholder="Geboortedatum" [matDatepicker]="myDatepicker" [(ngModel)]="this.data.personalInfo.dateOfBirth">
     <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
     <mat-datepicker #myDatepicker></mat-datepicker>
   </mat-form-field>

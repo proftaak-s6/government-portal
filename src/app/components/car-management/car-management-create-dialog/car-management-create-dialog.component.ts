@@ -24,15 +24,15 @@ export class CarManagementCreateDialogComponent implements OnInit {
 
   retrieveCarData(value: string) {
     this.rdwService.getCarByLicensePlateNumber(value).subscribe((data: RdwCarResponse) => {
-      this.data.LicensePlateNumber = data.kenteken;
-      this.data.VehicleType = data.voertuigsoort;
-      this.data.EngineType = `${data.cilinderinhoud}cc`;
-      this.data.EnergyLabel = data.zuinigheidslabel;
+      this.data.licensePlateNumber = data.kenteken;
+      this.data.vehicleType = data.voertuigsoort;
+      this.data.engineType = `${data.cilinderinhoud}cc`;
+      this.data.energyLabel = data.zuinigheidslabel;
     },
     err => console.log('licenseplate is invalid, or there are missing fields'));
 
     this.rdwService.getFuelByLicensePlateNumber(value).subscribe((data: RdwFuelResponse) => {
-      this.data.FuelType = data.brandstof_omschrijving;
+      this.data.fuelType = data.brandstof_omschrijving;
     },
     err => console.log('licenseplate is invalid, or there are missing fields'));
   }

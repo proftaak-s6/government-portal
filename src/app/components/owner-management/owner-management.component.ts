@@ -45,7 +45,7 @@ export class OwnerManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.ownerService.save(result).subscribe(_ => {
-          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol opgeslagen.");
+          this.notify("De bestuurder " + owner.personalInfo.firstName + " " + owner.personalInfo.lastName + " is succesvol opgeslagen.");
           this.getData();
         });
       } else {
@@ -60,7 +60,7 @@ export class OwnerManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.ownerService.delete(result.id).subscribe(_ => {
-          this.notify("De bestuurder " + owner.PersonalInfo.FirstName + " " + owner.PersonalInfo.LastName + " is succesvol verwijderd.");
+          this.notify("De bestuurder " + owner.personalInfo.firstName + " " + owner.personalInfo.lastName + " is succesvol verwijderd.");
           this.getData();
         });
       } else {
@@ -75,9 +75,9 @@ export class OwnerManagementComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // If we received a result and the owner doesn't already own this car
       if (result) {
-        if (owner.Cars.filter(car => car.id === result.id).length === 0) {
+        if (owner.cars.filter(car => car.id === result.id).length === 0) {
           // Assign the car to the owner
-          owner.Cars.push(result);
+          owner.cars.push(result);
 
           // Save the owner
           this.ownerService.save(owner).subscribe(x => {
