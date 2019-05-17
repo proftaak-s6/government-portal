@@ -11,7 +11,7 @@ export class BrpService {
 
   private getIdQuery(id: string) {
     return `query {
-                    person(id: ${id})
+                    getById(id: ${id})
                     {
                       id
                       bsn
@@ -29,7 +29,7 @@ export class BrpService {
 
   private getBsnQuery(bsn: string) {
     return `query {
-                    person(bsn: ${bsn})
+                    getByBsn(bsn: ${bsn})
                     {
                       id
                       bsn
