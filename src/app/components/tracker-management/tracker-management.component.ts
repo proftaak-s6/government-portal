@@ -33,7 +33,7 @@ export class TrackerManagementComponent implements OnInit {
   }
 
   onAddClick() {
-    this.onEditClick(new Tracker("", new Date()))
+    this.onEditClick(new Tracker());
   }
 
   onEditClick(tracker: Tracker) {
@@ -46,7 +46,7 @@ export class TrackerManagementComponent implements OnInit {
       if (result) {
         this.trackerService.save(result).subscribe(_ => {
           this.notify("De tracker is opgeslagen.");
-          this.getData()
+          this.getData();
         });
       } else {
         this.getData();

@@ -9,36 +9,36 @@ import {
 } from "src/services/rdw.service";
 
 @Component({
-  selector: 'app-car-management-create-dialog',
-  templateUrl: './car-management-create-dialog.component.html',
-  styleUrls: ['./car-management-create-dialog.component.less']
+  selector: "app-car-management-create-dialog",
+  templateUrl: "./car-management-create-dialog.component.html",
+  styleUrls: ["./car-management-create-dialog.component.less"]
 })
 export class CarManagementCreateDialogComponent implements OnInit {
-
   constructor(
     private rdwService: RdwService,
     public dialogRef: MatDialogRef<CarManagementCreateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Car
-  ) {
+  ) {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   retrieveCarData(value: string) {
-    this.rdwService.getCarByLicensePlateNumber(value).subscribe((data: RdwCarResponse) => {
-      this.data.LicensePlateNumber = data.kenteken;
-      this.data.VehicleType = data.voertuigsoort;
-      this.data.EngineType = `${data.cilinderinhoud}cc`;
-      this.data.EnergyLabel = data.zuinigheidslabel;
-    },
-    err => console.log('licenseplate is invalid, or there are missing fields'));
+    this.rdwService
+      .getCarByLicensePlateNumber(value)
+      .subscribe((data: RdwCarResponse) => {
+        this.data.licensePlateNumber = data.kenteken;
+        this.data.vehicleType = data.voertuigsoort;
+        this.data.engineType = `${data.cilinderinhoud}cc`;
+        this.data.energyLabel = data.zuinigheidslabel;
+        this.data.brand = data.merk;
+        this.data.series = data.handelsbenaming;
+      });
 
-    this.rdwService.getFuelByLicensePlateNumber(value).subscribe((data: RdwFuelResponse) => {
-      this.data.FuelType = data.brandstof_omschrijving;
-    },
-    err => console.log('licenseplate is invalid, or there are missing fields'));
+    this.rdwService
+      .getFuelByLicensePlateNumber(value)
+      .subscribe((data: RdwFuelResponse) => {
+        this.data.fuelType = data.brandstof_omschrijving;
+      });
   }
 
   onCancelClick() {
@@ -48,5 +48,4 @@ export class CarManagementCreateDialogComponent implements OnInit {
   onSubmit() {
     this.dialogRef.close(this.data);
   }
-
 }

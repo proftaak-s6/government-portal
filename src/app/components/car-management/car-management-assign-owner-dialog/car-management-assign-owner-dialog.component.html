@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>Rekeningrijder</h1>
+<div mat-dialog-content *ngIf="this.brpPerson">
+  <mat-form-field class="wide-form-field">
+    <input
+      matInput
+      placeholder="BSN"
+      [(ngModel)]="this.bsnInputField"
+      (change)="onBsnInputFieldChange()"
+    />
+  </mat-form-field>
+  <mat-form-field class="wide-form-field">
+    <input
+      matInput
+      placeholder="Email adres"
+      [(ngModel)]="this.brpPerson.emailadres"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Voornaam"
+      [(ngModel)]="this.brpPerson.gegeven_naam"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Achternaam"
+      [(ngModel)]="this.brpPerson.achternaam"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Straat"
+      [(ngModel)]="this.brpPerson.straat"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Postcode"
+      [(ngModel)]="this.brpPerson.postcode"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Woonplaats"
+      [(ngModel)]="this.brpPerson.woonplaats"
+      disabled
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Geboortedatum"
+      [(ngModel)]="this.brpPerson.geboortedatum"
+      disabled
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()" cdkFocusInitial>Ok</button>
+</div>

@@ -6,37 +6,61 @@
     </button>
   </div>
   <mat-form-field class="filter">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+    />
   </mat-form-field>
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="licensePlateNumber">
-      <th mat-header-cell *matHeaderCellDef> Kenteken </th>
-      <td mat-cell *matCellDef="let element"> {{element.LicensePlateNumber}} </td>
+      <th mat-header-cell *matHeaderCellDef>Kenteken</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.licensePlateNumber }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="carType">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.VehicleType}} </td>
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.vehicleType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="engineType">
-      <th mat-header-cell *matHeaderCellDef> Motor </th>
-      <td mat-cell *matCellDef="let element"> {{element.EngineType}} </td>
+      <th mat-header-cell *matHeaderCellDef>Motor</th>
+      <td mat-cell *matCellDef="let element">{{ element.engineType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="fuelType">
-      <th mat-header-cell *matHeaderCellDef> Brandstof </th>
-      <td mat-cell *matCellDef="let element"> {{element.FuelType}} </td>
+      <th mat-header-cell *matHeaderCellDef>Brandstof</th>
+      <td mat-cell *matCellDef="let element">{{ element.fuelType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="energyLabel">
-      <th mat-header-cell *matHeaderCellDef> Label </th>
-      <td mat-cell *matCellDef="let element"> {{element.EnergyLabel}} </td>
+      <th mat-header-cell *matHeaderCellDef>Label</th>
+      <td mat-cell *matCellDef="let element">{{ element.energyLabel }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef>Merk</th>
+      <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="series">
+      <th mat-header-cell *matHeaderCellDef>Serie</th>
+      <td mat-cell *matCellDef="let element">{{ element.series }}</td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Acties </th>
+      <th mat-header-cell *matHeaderCellDef>Acties</th>
+
       <td mat-cell *matCellDef="let element">
+        <button
+          mat-button
+          (click)="openAssignOwnerDialog(element)"
+          color="primary"
+        >
+          <mat-icon>person</mat-icon>
+        </button>
         <button mat-button (click)="openDeleteCarDialog(element)" color="warn">
           <mat-icon>delete</mat-icon>
         </button>
@@ -44,10 +68,13 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
   <div class="action-bar">
-    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100]"></mat-paginator>
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[10, 20, 50, 100]"
+    ></mat-paginator>
   </div>
 </div>
