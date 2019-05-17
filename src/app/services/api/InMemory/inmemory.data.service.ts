@@ -13,6 +13,7 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const niels_Tracker: Tracker = new Tracker("Tankimax");
     const niels_Car: Car = new Car("TD-NR-98", "Car", "Large", "Biodiesel", "B+", niels_Tracker);
+    const test_Car: Car = new Car("35-AR-BK", "Personenauto", "1200cc", "Benzine", "C", null);
 
     const bono_PersonalInfo: PersonalInfo =
       new PersonalInfo("Bono", "IJpelaar", new Date(1995, 4, 24), "Enschotsestraat", "111-24", "5014DD", "Tilburg", "The Netherlands");
@@ -27,7 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const reinoud_Owner: Owner = new Owner(reinoud_PersonalInfo, new Array<Car>());
 
     const trackers: Tracker[] = [bono_Tracker, reinoud_Tracker, niels_Tracker];
-    const cars: Car[] = [bono_Car, reinoud_Car, niels_Car];
+    const cars: Car[] = [bono_Car, reinoud_Car, niels_Car, test_Car];
     const owners: Owner[] = [bono_Owner, reinoud_Owner];
     const rdw_car: RdwCarResponse[] = [
       { cilinderinhoud: "1200", kenteken: "22LDAP", voertuigsoort: "Personenauto", zuinigheidslabel: "B" },

@@ -28,6 +28,7 @@ import { TrackerManagementDeleteDialogComponent } from './components/tracker-man
 
 // Material Angular Components
 import {
+  MatAutocompleteModule,
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
@@ -49,6 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
 // MOCK Api
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService as InMemoryDataService } from './services/api/InMemory/inmemory.data.service';
+import { CarManagementAssignTrackerDialogComponent } from './components/car-management/car-management-assign-tracker-dialog/car-management-assign-tracker-dialog.component';
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     TrackerManagementComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent,
+    CarManagementAssignTrackerDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +84,7 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     // Material Angular Components
     BrowserAnimationsModule,
+    MatAutocompleteModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
@@ -102,7 +106,8 @@ import { InMemoryDataService as InMemoryDataService } from './services/api/InMem
     OwnerManagementDeleteDialogComponent,
     OwnerManagementAssignCarDialogComponent,
     TrackerManagementDialogComponent,
-    TrackerManagementDeleteDialogComponent
+    TrackerManagementDeleteDialogComponent,
+    CarManagementAssignTrackerDialogComponent
   ],
   providers: [InMemoryDataService],
   bootstrap: [AppComponent]
