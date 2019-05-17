@@ -1,8 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { RdwService, RdwCarResponse, RdwFuelResponse } from 'src/app/services/rdw/rdw.service';
-import { Car } from 'src/entities/Car';
+import { Component, OnInit, Inject } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { Car } from "src/entities/Car";
+import {
+  RdwService,
+  RdwCarResponse,
+  RdwFuelResponse
+} from "src/services/rdw.service";
 
 @Component({
   selector: 'app-car-management-create-dialog',

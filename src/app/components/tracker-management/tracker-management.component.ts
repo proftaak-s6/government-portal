@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TrackerService } from 'src/app/services/tracker/tracker.service';
+import { TrackerService } from 'src/services/tracker.service';
 import { MatDialog, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Tracker } from 'src/entities/Tracker';
 import { TrackerManagementDeleteDialogComponent } from './tracker-management-delete-dialog/tracker-management-delete-dialog.component';

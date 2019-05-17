@@ -1,9 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
-import { CarManagementDeleteDialogComponent } from './car-management-delete-dialog/car-management-delete-dialog.component';
-import { CarService } from 'src/app/services/car/car.service';
-import { Car } from 'src/entities/Car';
-import { CarManagementCreateDialogComponent } from './car-management-create-dialog/car-management-create-dialog.component';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import {
+  MatTableDataSource,
+  MatPaginator,
+  MatDialog,
+  MatSnackBar
+} from "@angular/material";
+import { CarManagementDeleteDialogComponent } from "./car-management-delete-dialog/car-management-delete-dialog.component";
+import { CarService } from "src/services/car.service";
+import { Car } from "src/entities/Car";
+import { CarManagementCreateDialogComponent } from "./car-management-create-dialog/car-management-create-dialog.component";
+import { CarManagementAssignOwnerDialogComponent } from "./car-management-assign-owner-dialog/car-management-assign-owner-dialog.component";
 
 @Component({
   selector: 'rr-car-management',
