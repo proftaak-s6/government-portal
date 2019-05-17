@@ -1,0 +1,18 @@
+<div class="form-container">
+  <form>
+    <h3>Koppel {{this.data.licensePlateNumber}} aan tracker</h3>
+    <mat-form-field>
+      <mat-label class="">Selecteer tracker</mat-label>
+      <input type="text" placeholder="Tracker" matInput [(ngModel)]="data.tracker" [formControl]="trackerControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let tracker of filteredTrackers | async" [value]="tracker">
+          {{tracker.manufacturer}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="action-bar">
+      <button mat-button (click)="onCancelClick()" color="warn" type="button">Annuleren</button>
+      <button class="save-button" mat-button (click)="onSubmit()" color="primary" type="submit">Accepteren</button>
+    </div>
+  </form>
+</div>

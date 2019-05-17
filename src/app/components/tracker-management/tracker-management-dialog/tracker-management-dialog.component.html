@@ -2,12 +2,12 @@
   <form>
     <h3>Tracker toevoegen</h3>
     <mat-form-field>
-      <input matInput placeholder="Fabrikant" [(ngModel)]="this.data.Manifacturer" name="manifacturer" />
+      <input matInput placeholder="Fabrikant" [(ngModel)]="this.data.manufacturer" name="manufacturer" />
     </mat-form-field>
 
     <mat-form-field>
       <input matInput placeholder="Activatiedatum" [matDatepicker]="myDatepicker"
-        [(ngModel)]="this.data.ActivationDate" name="myDatePicker">
+        [(ngModel)]="this.data.activationDate" name="myDatePicker">
       <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #myDatepicker></mat-datepicker>
     </mat-form-field>
