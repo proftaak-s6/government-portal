@@ -98,6 +98,26 @@ export class CarManagementComponent implements OnInit {
     });
   }
 
+  hasTracker(car: Car): boolean {
+    return car.tracker ? true : false;
+  }
+
+  openAssignTrackerDialog(value: Car) {
+    const dialogRef = this.matDialog.open(CarManagementAssignTrackerDialogComponent, {
+      width: '400px',
+      data: value
+    });
+
+    dialogRef.afterClosed().subscribe((result: Car) => {
+      if (result) {
+        console.log(result);
+        this.getData();
+      } else {
+        this.getData();
+      }
+    });
+  }
+
   openDeleteCarDialog(value: Car) {
     const dialogRef = this.matDialog.open(CarManagementDeleteDialogComponent, {
       width: "500px",

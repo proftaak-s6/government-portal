@@ -34,6 +34,7 @@ import { TrackerManagementDeleteDialogComponent } from "./components/tracker-man
 
 // Material Angular Components
 import {
+  MatAutocompleteModule,
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
@@ -49,6 +50,7 @@ import {
   MatSnackBarModule
 } from "@angular/material";
 
+import { CarManagementAssignTrackerDialogComponent } from './components/car-management/car-management-assign-tracker-dialog/car-management-assign-tracker-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +65,8 @@ import {
     CarManagementAssignOwnerDialogComponent,
     TrackerManagementComponent,
     TrackerManagementDialogComponent,
-    TrackerManagementDeleteDialogComponent
+    TrackerManagementDeleteDialogComponent,
+    CarManagementAssignTrackerDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import {
     FormsModule,
     // Material Angular Components
     BrowserAnimationsModule,
+    MatAutocompleteModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
@@ -93,7 +97,8 @@ import {
     CarManagementDeleteDialogComponent,
     CarManagementAssignOwnerDialogComponent,
     TrackerManagementDialogComponent,
-    TrackerManagementDeleteDialogComponent
+    TrackerManagementDeleteDialogComponent,
+    CarManagementAssignTrackerDialogComponent
   ],
   providers: [
     // Disabled to enable external API calls
