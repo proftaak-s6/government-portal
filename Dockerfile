@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:10.15.3-alpine as node
+FROM node:10.15.3-alpine
 
 WORKDIR /usr/src/app
 
@@ -14,4 +14,4 @@ RUN npm run build:production
 # Stage 2: Serve
 FROM nginx:1.15.9-alpine as nginx
 
-COPY --from=node /usr/src/app/dist/overheidsportaal /usr/share/nginx/html
+COPY --from=0 /usr/src/app/dist/overheidsportaal /usr/share/nginx/html
