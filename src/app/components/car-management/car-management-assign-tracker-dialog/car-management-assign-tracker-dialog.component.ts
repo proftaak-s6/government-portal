@@ -5,7 +5,8 @@ import { Tracker } from 'src/entities/Tracker';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { TrackerService } from 'src/app/services/tracker/tracker.service';
+import { TrackerService } from 'src/services/tracker.service';
+
 
 @Component({
   selector: 'app-car-management-assign-tracker-dialog',
@@ -41,7 +42,7 @@ export class CarManagementAssignTrackerDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.trackerService.findAll().subscribe((trackers: Tracker[]) => {
+    this.trackerService.findAvailable().subscribe((trackers: Tracker[]) => {
       this.trackerData = trackers;
       this.filteredTrackers = this.trackerControl.valueChanges
       .pipe(

@@ -14,7 +14,7 @@ export class TrackerManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   private dataSource: MatTableDataSource<Tracker> = new MatTableDataSource<Tracker>();
-  private displayedColumns: string[] = ['manifacturer', 'activationDate', 'actions']
+  private displayedColumns: string[] = ['manufacturer', 'activationDate', 'actions'];
 
   constructor(
     private trackerService: TrackerService,

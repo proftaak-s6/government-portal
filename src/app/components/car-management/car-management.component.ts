@@ -10,6 +10,7 @@ import { CarService } from "src/services/car.service";
 import { Car } from "src/entities/Car";
 import { CarManagementCreateDialogComponent } from "./car-management-create-dialog/car-management-create-dialog.component";
 import { CarManagementAssignOwnerDialogComponent } from "./car-management-assign-owner-dialog/car-management-assign-owner-dialog.component";
+import { CarManagementAssignTrackerDialogComponent } from './car-management-assign-tracker-dialog/car-management-assign-tracker-dialog.component';
 
 @Component({
   selector: "rr-car-management",

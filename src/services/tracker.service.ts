@@ -7,14 +7,23 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class TrackerService {
+  private readonly baseUrl = "http://car.fontys-project.nl/tracker";
+
   findAll(): Observable<any> {
-    throw new Error("Method not implemented.");
+    return this.http.get<Tracker[]>(this.baseUrl);
   }
-  save(result: Tracker): Observable<any> {
-    throw new Error("Method not implemented.");
+
+  findAvailable(): Observable<Tracker[]> {
+    return this.http.get<Tracker[]>(this.baseUrl + "/available");
   }
-  delete(id: import("angular2-uuid").UUID): Observable<any> {
-    throw new Error("Method not implemented.");
+
+  save(tracker: Tracker): Observable<any> {
+    return this.http.post<Tracker>(this.baseUrl, tracker);
   }
-  constructor(private _http: HttpClient) {}
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + "/" + id);
+  }
+
+  constructor(private http: HttpClient) {}
 }
