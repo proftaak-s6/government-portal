@@ -44,7 +44,7 @@ export class TrackerManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Tracker) => {
       if (result) {
-        this.trackerService.save(result).subscribe(_ => {
+        this.trackerService.edit(result).subscribe(_ => {
           this.notify("De tracker is opgeslagen.");
           this.getData();
         });

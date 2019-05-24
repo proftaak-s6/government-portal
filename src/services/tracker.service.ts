@@ -21,6 +21,10 @@ export class TrackerService {
     return this.http.post<Tracker>(this.baseUrl, tracker);
   }
 
+  edit(tracker: Tracker): Observable<any> {
+    return this.http.put<Tracker>(this.baseUrl, tracker);
+  }
+
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + "/" + id);
   }
