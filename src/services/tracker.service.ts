@@ -29,5 +29,9 @@ export class TrackerService {
     return this.http.delete(this.baseUrl + "/" + id);
   }
 
+  assign(carId: number, trackerId: number) {
+    return this.http.put(this.baseUrl + '/assign/' + trackerId + '/to/' + carId, {trackerId, carId});
+  }
+
   constructor(private http: HttpClient) {}
 }

@@ -14,8 +14,6 @@ export class CarService {
   }
 
   public save(car: Car): Observable<Car> {
-    console.log("Saving car");
-    console.log(car);
     return this.http.put<Car>(this.baseUrl, car);
   }
 

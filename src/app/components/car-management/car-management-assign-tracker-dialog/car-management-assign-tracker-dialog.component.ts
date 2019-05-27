@@ -42,7 +42,7 @@ export class CarManagementAssignTrackerDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.trackerService.findAvailable().subscribe((trackers: Tracker[]) => {
+    this.trackerService.findAll().subscribe((trackers: Tracker[]) => {
       this.trackerData = trackers;
       this.filteredTrackers = this.trackerControl.valueChanges
       .pipe(
