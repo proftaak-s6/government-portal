@@ -38,7 +38,7 @@ pipeline {
             steps{
                 node("docker-prod"){
                     git([url: 'https://github.com/proftaak-s6/government-portal.git', branch: 'master', credentialsId: 'Github'])
-                    // sh "docker service rm government-portal_overheidsportaal"
+                    sh "docker service rm government-portal_overheidsportaal"
                     sh "docker stack deploy --with-registry-auth -c docker-compose.prod.yml government-portal"
                 }
             }
