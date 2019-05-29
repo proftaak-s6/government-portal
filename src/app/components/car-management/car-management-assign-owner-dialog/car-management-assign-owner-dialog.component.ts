@@ -49,7 +49,6 @@ export class CarManagementAssignOwnerDialogComponent implements OnInit {
   }
 
   onBsnInputFieldChange() {
-    console.log(this.bsnInputField);
     this.brpService
       .getPersonByBsn(this.bsnInputField)
       .subscribe(res => (this.brpPerson = res));

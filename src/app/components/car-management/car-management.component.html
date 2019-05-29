@@ -49,10 +49,10 @@
 
       <td mat-cell *matCellDef="let element">
         <button mat-button *ngIf="!hasUserHistory(element)" (click)="openAssignOwnerDialog(element)" color="accent">
-          <mat-icon>person</mat-icon>
+          <mat-icon>person_add</mat-icon>
         </button>
         <button mat-button *ngIf="hasUserHistory(element)" (click)="openAssignOwnerDialog(element)" color="primary">
-          <mat-icon>person</mat-icon>
+          <mat-icon>person_add</mat-icon>
         </button>
         <button mat-button *ngIf="!hasTracker(element)" (click)="openAssignTrackerDialog(element)" color="accent">
           <mat-icon>playlist_add</mat-icon>

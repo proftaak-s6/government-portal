@@ -33,7 +33,6 @@ export class BrpService {
 
   public getPersonByBsn(bsn: string): Observable<Person> {
     const queryUrl = this.brpServiceUrl + `?query=${this.getBsnQuery(bsn)}`;
-    console.log(queryUrl);
     return this.getPersonByQuery(queryUrl);
   }
 

@@ -38,7 +38,7 @@ export class CarManagementComponent implements OnInit {
     private matSnackBar: MatSnackBar,
     private carService: CarService,
     private trackerService: TrackerService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getData();
@@ -46,7 +46,6 @@ export class CarManagementComponent implements OnInit {
 
   getData() {
     this.carService.findAll().subscribe((cars: Car[]) => {
-      console.log(cars);
       this.dataSource = new MatTableDataSource<Car>(cars);
       this.dataSource.paginator = this.paginator;
     });
@@ -62,7 +61,6 @@ export class CarManagementComponent implements OnInit {
     );
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.carService.assignNewOwner(car.id, result).subscribe(
           result => {
@@ -92,8 +90,8 @@ export class CarManagementComponent implements OnInit {
         this.carService.save(result).subscribe(res => {
           this.notify(
             "De auto met kentekenplaat " +
-              result.licensePlateNumber +
-              " is toegevoegd."
+            result.licensePlateNumber +
+            " is toegevoegd."
           );
           this.getData();
         });
@@ -119,8 +117,13 @@ export class CarManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
-        this.trackerService.assign(result.id, result.tracker.id);
-        this.getData();
+        this.trackerService.assign(result.id, result.tracker.id).subscribe(res => {
+          console.log(res);
+          this.getData();
+        }, err => { console.log(err); },
+          () => {
+            console.log('Assigned tracker');
+          });
       } else {
         this.getData();
       }
@@ -138,8 +141,8 @@ export class CarManagementComponent implements OnInit {
         this.carService.delete(result.id).subscribe(res => {
           this.notify(
             "De auto met kentekenplaat " +
-              value.licensePlateNumber +
-              " is succesvol verwijderd."
+            value.licensePlateNumber +
+            " is succesvol verwijderd."
           );
           this.getData();
         });
