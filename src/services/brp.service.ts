@@ -11,7 +11,7 @@ export class BrpService {
 
   private getIdQuery(id: string) {
     return `query {
-                    getById(id: ${id})
+                    personById(id: ${id})
                     {
                       id
                       bsn
@@ -28,25 +28,12 @@ export class BrpService {
   }
 
   private getBsnQuery(bsn: string) {
-    return `query {
-                    getByBsn(bsn: ${bsn})
-                    {
-                      id
-                      bsn
-                      gegeven_naam
-                      achternaam
-                      geboortedatum
-                      straat
-                      postcode
-                      woonplaats
-                      land
-                      emailadres
-                    }
-                }`;
+    return `query{personByBsn(bsn:"${bsn}"){id bsn gegeven_naam achternaam geboortedatum straat postcode woonplaats land emailadres}}`;
   }
 
   public getPersonByBsn(bsn: string): Observable<Person> {
     const queryUrl = this.brpServiceUrl + `?query=${this.getBsnQuery(bsn)}`;
+    console.log(queryUrl);
     return this.getPersonByQuery(queryUrl);
   }
 
@@ -59,16 +46,16 @@ export class BrpService {
     return this.http.get<BrpRootObject>(queryUrl).pipe(
       map((value: BrpRootObject) => {
         return {
-          id: value.data.person.id,
-          bsn: value.data.person.bsn,
-          gegeven_naam: value.data.person.gegeven_naam,
-          achternaam: value.data.person.achternaam,
-          geboortedatum: value.data.person.geboortedatum,
-          straat: value.data.person.straat,
-          postcode: value.data.person.postcode,
-          woonplaats: value.data.person.woonplaats,
-          land: value.data.person.land,
-          emailadres: value.data.person.emailadres
+          id: value.data.personByBsn.id,
+          bsn: value.data.personByBsn.bsn,
+          gegeven_naam: value.data.personByBsn.gegeven_naam,
+          achternaam: value.data.personByBsn.achternaam,
+          geboortedatum: value.data.personByBsn.geboortedatum,
+          straat: value.data.personByBsn.straat,
+          postcode: value.data.personByBsn.postcode,
+          woonplaats: value.data.personByBsn.woonplaats,
+          land: value.data.personByBsn.land,
+          emailadres: value.data.personByBsn.emailadres
         };
       })
     );
@@ -89,7 +76,7 @@ export interface Person {
 }
 
 export interface Data {
-  person: Person;
+  personByBsn: Person;
 }
 
 export interface BrpRootObject {

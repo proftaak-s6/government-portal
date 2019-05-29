@@ -17,8 +17,8 @@ export class CarService {
     return this.http.put<Car>(this.baseUrl, car);
   }
 
-  public assignNewOwner(brpId: number): Observable<object> {
-    return this.http.post(this.baseUrl + "/assignNewOwner", brpId);
+  public assignNewOwner(carId: number, ownerId: string): Observable<object> {
+    return this.http.put(this.baseUrl + "/assign/" + carId + "/to/" + ownerId, {carId, ownerId});
   }
 
   public delete(carId: number): Observable<object> {

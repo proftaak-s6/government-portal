@@ -11,6 +11,7 @@ import { Car } from "src/entities/Car";
 import { CarManagementCreateDialogComponent } from "./car-management-create-dialog/car-management-create-dialog.component";
 import { CarManagementAssignOwnerDialogComponent } from "./car-management-assign-owner-dialog/car-management-assign-owner-dialog.component";
 import { CarManagementAssignTrackerDialogComponent } from './car-management-assign-tracker-dialog/car-management-assign-tracker-dialog.component';
+import { TrackerService } from 'src/services/tracker.service';
 
 @Component({
   selector: "rr-car-management",
@@ -35,7 +36,8 @@ export class CarManagementComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private matSnackBar: MatSnackBar,
-    private carService: CarService
+    private carService: CarService,
+    private trackerService: TrackerService
   ) {}
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class CarManagementComponent implements OnInit {
 
   getData() {
     this.carService.findAll().subscribe((cars: Car[]) => {
+      console.log(cars);
       this.dataSource = new MatTableDataSource<Car>(cars);
       this.dataSource.paginator = this.paginator;
     });
@@ -54,13 +57,14 @@ export class CarManagementComponent implements OnInit {
       CarManagementAssignOwnerDialogComponent,
       {
         width: "428px",
-        data: car.ownerId
+        data: car
       }
     );
 
-    dialogRef.afterClosed().subscribe((brpId: number) => {
-      if (brpId > 0) {
-        this.carService.assignNewOwner(brpId).subscribe(
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.carService.assignNewOwner(car.id, result).subscribe(
           result => {
             this.notify(
               "Successfully assigned to owner to the car. Refreshing data..."
@@ -103,6 +107,10 @@ export class CarManagementComponent implements OnInit {
     return car.tracker ? true : false;
   }
 
+  hasUserHistory(car: Car): boolean {
+    return car.ownershipHistoryList.length > 0;
+  }
+
   openAssignTrackerDialog(value: Car) {
     const dialogRef = this.matDialog.open(CarManagementAssignTrackerDialogComponent, {
       width: '400px',
@@ -111,7 +119,7 @@ export class CarManagementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Car) => {
       if (result) {
-        console.log(result);
+        this.trackerService.assign(result.id, result.tracker.id);
         this.getData();
       } else {
         this.getData();

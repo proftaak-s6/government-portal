@@ -3,7 +3,7 @@ import { OwnershipHistory } from "./OwnershipHistory";
 
 export class Car {
   public id: number;
-  public ownerId: number;
+  public currentOwnerBsn: string;
   public ownershipHistoryList: OwnershipHistory[];
   public licensePlateNumber: string;
   public vehicleType: string;

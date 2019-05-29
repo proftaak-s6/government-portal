@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { BrpService, Person } from "src/services/brp.service";
+import { Car } from 'src/entities/Car';
 
 @Component({
   selector: "rr-car-management-assign-owner-dialog",
@@ -13,11 +14,11 @@ export class CarManagementAssignOwnerDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<CarManagementAssignOwnerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public brpId: number,
+    @Inject(MAT_DIALOG_DATA) public car: Car,
     private brpService: BrpService
   ) {
-    if (brpId) {
-      this.brpService.getPersonByBrpId(this.brpId).subscribe((res: Person) => {
+    if (car.currentOwnerBsn) {
+      this.brpService.getPersonByBsn(this.car.currentOwnerBsn).subscribe((res: Person) => {
         this.brpPerson = res;
         this.bsnInputField = res.bsn;
       });
@@ -48,6 +49,7 @@ export class CarManagementAssignOwnerDialogComponent implements OnInit {
   }
 
   onBsnInputFieldChange() {
+    console.log(this.bsnInputField);
     this.brpService
       .getPersonByBsn(this.bsnInputField)
       .subscribe(res => (this.brpPerson = res));
