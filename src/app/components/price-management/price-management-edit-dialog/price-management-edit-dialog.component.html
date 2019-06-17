@@ -1,0 +1,15 @@
+<div class="form-container">
+  <form>
+    <h3>Tarief aanpassen</h3>
+    <mat-form-field>
+      <input matInput [(ngModel)]="this.roadPrice.location" name="roadName" placeholder="Voor" disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="this.roadPrice.priceHistory[0].price" name="price" placeholder="Tarief (€/m)" type="number" step="0.001">
+    </mat-form-field>
+    <div class="action-bar">
+      <button mat-button (click)="onCancelClick()" color="warn">Annuleren</button>
+      <button mat-button (click)="onSaveClick()" cdkFocusInitial color="primary">Opslaan</button>
+    </div>
+  </form>
+</div>

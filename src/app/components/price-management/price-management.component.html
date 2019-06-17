@@ -1,0 +1,36 @@
+<div class="table-container">
+  <div class="table-top-bar">
+    <h3>Tarieven beheer</h3>
+  </div>
+  <mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="roadName">
+      <th mat-header-cell *matHeaderCellDef> Straatnaam </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Tarief </th>
+      <td mat-cell *matCellDef="let element"> €{{getCurrentRoadPrice(element.priceHistory)}}/m </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acties </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="openEditPriceDialog(element)" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button (click)="openPriceHistoryDialog(element)" color="primary">
+          <mat-icon>list</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div class="action-bar">
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50, 100]"></mat-paginator>
+  </div>
+</div>

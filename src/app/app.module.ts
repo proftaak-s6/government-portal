@@ -51,6 +51,10 @@ import {
 } from "@angular/material";
 
 import { CarManagementAssignTrackerDialogComponent } from './components/car-management/car-management-assign-tracker-dialog/car-management-assign-tracker-dialog.component';
+import { PriceManagementComponent } from './components/price-management/price-management.component';
+import { PriceManagementEditDialogComponent } from './components/price-management/price-management-edit-dialog/price-management-edit-dialog.component';
+import { PriceManagementHistoryDialogComponent } from './components/price-management/price-management-history-dialog/price-management-history-dialog.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +71,9 @@ import { CarManagementAssignTrackerDialogComponent } from './components/car-mana
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent,
     CarManagementAssignTrackerDialogComponent,
+    PriceManagementComponent,
+    PriceManagementEditDialogComponent,
+    PriceManagementHistoryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,11 +105,14 @@ import { CarManagementAssignTrackerDialogComponent } from './components/car-mana
     CarManagementAssignOwnerDialogComponent,
     TrackerManagementDialogComponent,
     TrackerManagementDeleteDialogComponent,
-    CarManagementAssignTrackerDialogComponent
+    CarManagementAssignTrackerDialogComponent,
+    PriceManagementEditDialogComponent,
+    PriceManagementHistoryDialogComponent
   ],
   providers: [
     // Disabled to enable external API calls
     // InMemoryDataService,
+    DatePipe,
     BrpService,
     CarService
   ],
